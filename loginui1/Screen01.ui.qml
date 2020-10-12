@@ -1,5 +1,6 @@
 import QtQuick 2.12
 import loginui1 1.0
+import QtQuick.Controls 2.15
 
 Rectangle {
     id: root
@@ -10,24 +11,6 @@ Rectangle {
         id: loginPage
         color: "#ffffff"
         anchors.fill: parent
-
-        PushButton {
-            id: registerButton
-            x: 260
-            y: 357
-            width: 120
-            height: 45
-            text: "Create Account"
-        }
-
-        PushButton {
-            id: loginButton
-            x: 259
-            y: 288
-            width: 120
-            height: 45
-            text: qsTr("Log In")
-        }
 
         Image {
             id: logo
@@ -50,6 +33,51 @@ Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             font.pointSize: 24
             font.family: Constants.font.family
+        }
+
+        Column {
+            id: fieldColumn
+            x: 241
+            anchors.top: parent.top
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.topMargin: 200
+            spacing: 5
+
+            TextField {
+                id: usernameField
+                width: 300
+                placeholderText: qsTr("Username")
+            }
+
+            TextField {
+                id: passwordField
+                width: 300
+                placeholderText: qsTr("Password")
+            }
+        }
+
+        Column {
+            id: buttonColumn
+            x: 259
+            y: 288
+            anchors.bottom: parent.bottom
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.bottomMargin: 50
+            spacing: 5
+
+            PushButton {
+                id: loginButton
+                width: 120
+                height: 45
+                text: qsTr("Log In")
+            }
+
+            PushButton {
+                id: registerButton
+                width: 120
+                height: 45
+                text: "Create Account"
+            }
         }
     }
 }
