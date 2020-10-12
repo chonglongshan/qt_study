@@ -22,4 +22,22 @@ Rectangle {
         source: "qt_logo_green_64x64px.png"
         fillMode: Image.PreserveAspectFit
     }
+
+    PushButton {
+        id: loginButton
+        x: 259
+        y: 288
+        width: 120
+        height: 45
+        text: qsTr("Log In")
+    }
+
+    PushButton {
+        id: registerButton
+        x: 260
+        y: 357
+        width: 120
+        height: 45
+        text: "Create Account"
+    }
 }
