@@ -84,6 +84,11 @@ Rectangle {
                 width: 120
                 height: 45
                 text: "Create Account"
+
+                Connections {
+                    target: registerButton
+                    onClicked: root.state = "registerState"
+                }
             }
         }
 
@@ -97,6 +102,11 @@ Rectangle {
             textItemFontpointSize: 24
             anchors.rightMargin: 10
             anchors.topMargin: 20
+
+            Connections {
+                target: backButton
+                onClicked: root.state = "loginState"
+            }
         }
     }
     states: [
