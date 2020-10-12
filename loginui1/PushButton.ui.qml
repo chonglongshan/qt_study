@@ -16,6 +16,7 @@ T.Button {
     rightPadding: 4
 
     text: "My Button"
+    property alias textItemFontpointSize: textItem.font.pointSize
 
     background: buttonBackground
     Rectangle {
