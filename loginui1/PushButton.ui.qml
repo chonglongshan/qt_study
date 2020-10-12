@@ -6,10 +6,12 @@ T.Button {
     id: control
 
     font: Constants.font
-    implicitWidth: Math.max(buttonBackground ? buttonBackground.implicitWidth : 0,
-                            textItem.implicitWidth + leftPadding + rightPadding)
-    implicitHeight: Math.max(buttonBackground ? buttonBackground.implicitHeight : 0,
-                             textItem.implicitHeight + topPadding + bottomPadding)
+    implicitWidth: Math.max(
+                       buttonBackground ? buttonBackground.implicitWidth : 0,
+                       textItem.implicitWidth + leftPadding + rightPadding)
+    implicitHeight: Math.max(
+                        buttonBackground ? buttonBackground.implicitHeight : 0,
+                        textItem.implicitHeight + topPadding + bottomPadding)
     leftPadding: 4
     rightPadding: 4
 
@@ -18,7 +20,7 @@ T.Button {
     background: buttonBackground
     Rectangle {
         id: buttonBackground
-        color: "#d4d4d4"
+        color: "#41cd52"
         implicitWidth: 100
         implicitHeight: 40
         opacity: enabled ? 1 : 0.3
@@ -33,7 +35,7 @@ T.Button {
         text: control.text
 
         opacity: enabled ? 1.0 : 0.3
-        color: "gray"
+        color: "#ffffff"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         elide: Text.ElideRight
@@ -52,11 +54,11 @@ T.Button {
             when: control.down
             PropertyChanges {
                 target: textItem
-                color: "black"
+                color: "#ffffff"
             }
             PropertyChanges {
                 target: buttonBackground
-                color: "#a2a2a2"
+                color: "#21be2b"
                 border.color: "black"
             }
         }
