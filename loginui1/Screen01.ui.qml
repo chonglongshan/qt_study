@@ -6,6 +6,7 @@ Rectangle {
     id: root
     width: Constants.width
     height: Constants.height
+    state: "loginState"
 
     Rectangle {
         id: loginPage
@@ -98,4 +99,27 @@ Rectangle {
             anchors.topMargin: 20
         }
     }
+    states: [
+        State {
+            name: "loginState"
+
+            PropertyChanges {
+                target: verifyPasswordField
+                visible: false
+            }
+
+            PropertyChanges {
+                target: backButton
+                visible: false
+            }
+        },
+        State {
+            name: "registerState"
+
+            PropertyChanges {
+                target: loginButton
+                visible: false
+            }
+        }
+    ]
 }
