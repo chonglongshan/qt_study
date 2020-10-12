@@ -54,6 +54,12 @@ Rectangle {
                 width: 300
                 placeholderText: qsTr("Password")
             }
+
+            TextField {
+                id: verifyPasswordField
+                width: 300
+                placeholderText: qsTr("Verify password")
+            }
         }
 
         Column {
@@ -78,6 +84,18 @@ Rectangle {
                 height: 45
                 text: "Create Account"
             }
+        }
+
+        PushButton {
+            id: backButton
+            x: 118
+            width: 40
+            text: "<"
+            anchors.right: parent.right
+            anchors.top: parent.top
+            textItemFontpointSize: 24
+            anchors.rightMargin: 10
+            anchors.topMargin: 20
         }
     }
 }
