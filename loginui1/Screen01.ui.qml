@@ -136,11 +136,49 @@ Rectangle {
         endFrame: 1000
         enabled: true
         startFrame: 0
+
+        KeyframeGroup {
+            target: backButton
+            property: "opacity"
+            Keyframe {
+                frame: 0
+                value: 0
+            }
+
+            Keyframe {
+                frame: 1000
+                value: 1
+            }
+        }
+
+        KeyframeGroup {
+            target: verifyPasswordField
+            property: "opacity"
+            Keyframe {
+                frame: 1000
+                value: 1
+            }
+
+            Keyframe {
+                frame: 0
+                value: 0
+            }
+        }
+
+        KeyframeGroup {
+            target: loginButton
+            property: "opacity"
+            Keyframe {
+                frame: 1000
+                value: 0
+            }
+        }
     }
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.100000023841858}D{i:4}D{i:5}D{i:6}D{i:13}
+    D{i:0;formeditorZoom:1.100000023841858}D{i:4}D{i:5}D{i:6}D{i:8}D{i:11}D{i:13}
 }
 ##^##*/
+
