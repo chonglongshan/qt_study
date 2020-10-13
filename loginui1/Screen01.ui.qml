@@ -1,6 +1,7 @@
 import QtQuick 2.12
 import loginui1 1.0
 import QtQuick.Controls 2.15
+import QtQuick.Timeline 1.0
 
 Rectangle {
     id: root
@@ -111,4 +112,35 @@ Rectangle {
             }
         }
     }
+
+    Timeline {
+        id: timeline
+        animations: [
+            TimelineAnimation {
+                id: toLoginState
+                running: false
+                duration: 1000
+                loops: 1
+                to: 1000
+                from: 0
+            },
+            TimelineAnimation {
+                id: toRegisterState
+                running: false
+                duration: 1000
+                loops: 1
+                to: 0
+                from: 1000
+            }
+        ]
+        endFrame: 1000
+        enabled: true
+        startFrame: 0
+    }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:1.100000023841858}D{i:4}D{i:5}D{i:6}D{i:13}
+}
+##^##*/
