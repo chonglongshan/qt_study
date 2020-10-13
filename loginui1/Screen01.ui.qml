@@ -6,7 +6,6 @@ Rectangle {
     id: root
     width: Constants.width
     height: Constants.height
-    state: "loginState"
 
     Rectangle {
         id: loginPage
@@ -36,31 +35,34 @@ Rectangle {
             font.family: Constants.font.family
         }
 
-        Column {
-            id: fieldColumn
-            x: 241
+        TextField {
+            id: verifyPasswordField
+            x: 170
+            width: 300
+            anchors.top: passwordField.bottom
+            anchors.horizontalCenter: passwordField.horizontalCenter
+            anchors.topMargin: 5
+            placeholderText: qsTr("Verify password")
+        }
+
+        TextField {
+            id: passwordField
+            x: 170
+            width: 300
+            anchors.top: usernameField.bottom
+            anchors.horizontalCenter: usernameField.horizontalCenter
+            anchors.topMargin: 5
+            placeholderText: qsTr("Password")
+        }
+
+        TextField {
+            id: usernameField
+            x: 170
+            width: 300
             anchors.top: parent.top
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.topMargin: 200
-            spacing: 5
-
-            TextField {
-                id: usernameField
-                width: 300
-                placeholderText: qsTr("Username")
-            }
-
-            TextField {
-                id: passwordField
-                width: 300
-                placeholderText: qsTr("Password")
-            }
-
-            TextField {
-                id: verifyPasswordField
-                width: 300
-                placeholderText: qsTr("Verify password")
-            }
+            placeholderText: qsTr("Username")
         }
 
         Column {
@@ -109,27 +111,4 @@ Rectangle {
             }
         }
     }
-    states: [
-        State {
-            name: "loginState"
-
-            PropertyChanges {
-                target: verifyPasswordField
-                visible: false
-            }
-
-            PropertyChanges {
-                target: backButton
-                visible: false
-            }
-        },
-        State {
-            name: "registerState"
-
-            PropertyChanges {
-                target: loginButton
-                visible: false
-            }
-        }
-    ]
 }
