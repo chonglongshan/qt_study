@@ -189,6 +189,34 @@ Rectangle {
             }
         }
     }
+    states: [
+        State {
+            name: "loginState"
+
+            PropertyChanges {
+                target: timeline
+                enabled: true
+            }
+
+            PropertyChanges {
+                target: toRegisterState
+                running: true
+            }
+        },
+        State {
+            name: "registerState"
+
+            PropertyChanges {
+                target: timeline
+                enabled: true
+            }
+
+            PropertyChanges {
+                target: toLoginState
+                running: true
+            }
+        }
+    ]
 }
 
 /*##^##
