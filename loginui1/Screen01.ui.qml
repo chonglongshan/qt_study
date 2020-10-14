@@ -183,7 +183,8 @@ Rectangle {
             }
 
             Keyframe {
-                frame: 1000
+                easing.bezierCurve: [0.39, 0.575, 0.565, 1, 1, 1]
+                frame: 999
                 value: 5
             }
         }
@@ -192,7 +193,7 @@ Rectangle {
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.100000023841858}D{i:4}D{i:13}
+    D{i:0;formeditorZoom:1.100000023841858}D{i:4}D{i:11}D{i:13}
 }
 ##^##*/
 
