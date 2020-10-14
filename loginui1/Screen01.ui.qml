@@ -173,12 +173,26 @@ Rectangle {
                 value: 0
             }
         }
+
+        KeyframeGroup {
+            target: verifyPasswordField
+            property: "anchors.topMargin"
+            Keyframe {
+                frame: 0
+                value: -40
+            }
+
+            Keyframe {
+                frame: 1000
+                value: 5
+            }
+        }
     }
 }
 
 /*##^##
 Designer {
-    D{i:0;formeditorZoom:1.100000023841858}D{i:4}D{i:5}D{i:6}D{i:8}D{i:11}D{i:13}
+    D{i:0;formeditorZoom:1.100000023841858}D{i:4}D{i:13}
 }
 ##^##*/
 
