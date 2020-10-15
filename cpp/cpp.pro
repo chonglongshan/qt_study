@@ -9,4 +9,5 @@ SOURCES += \
 
 HEADERS += \
     mainwindow.h \
+    ui_mainwindow.h \
     ui_x.h

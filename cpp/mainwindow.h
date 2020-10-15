@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 
-namespace Ui { class YYYWindow; }
+
+namespace Ui { class MainWindow; }
+
 
 class MainWindow
 {
@@ -10,10 +12,7 @@ public:
     MainWindow();
     ~MainWindow();
 
-    void show();
-
 private:
-    Ui::YYYWindow *ui;
+    Ui::MainWindow *ui;
 };
-
 #endif // MAINWINDOW_H

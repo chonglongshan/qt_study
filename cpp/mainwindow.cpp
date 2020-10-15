@@ -1,9 +1,8 @@
 #include "mainwindow.h"
-#include "ui_x.h"
-
+#include "ui_mainwindow.h"
 
 MainWindow::MainWindow()
-    : ui(new Ui::YYYWindow)
+    : ui(new Ui::MainWindow)
 {
 
 }
@@ -13,7 +12,3 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::show()
-{
-
-}
