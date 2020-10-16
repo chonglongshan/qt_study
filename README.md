@@ -13,6 +13,11 @@ qt学习练手
 - bbb
 ```
 
+**2020-10-16 P1**
+1. 根据 Qt-studentmanager 进行学习仿写。
+- 新建 Qt-studentmanager 的仿品项目。
+- Qt-studentmanager ： https://github.com/chenyongzhe/Qt-studentmanager (chenyongzhe/Qt-studentmanager)
+
 **2020-10-15 P1**
 1. 类（无论是否在命名空间中）在用于对象实例定义时（无论是否是 new 形式，即无论栈中分配还是堆中分配），都需要有该类的完整定义。否则编译不过。
 - IDE 的编辑状态下的自动智能提示，会提示报错。 QTCreator 中纯 cpp 项目下是这样。
