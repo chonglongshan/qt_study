@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    allstuinform.cpp \
     globle.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -16,12 +17,14 @@ SOURCES += \
     studentform.cpp
 
 HEADERS += \
+    allstuinform.h \
     globle.h \
     mainwindow.h \
     manger.h \
     studentform.h
 
 FORMS += \
+    allstuinform.ui \
     mainwindow.ui \
     manger.ui \
     studentform.ui

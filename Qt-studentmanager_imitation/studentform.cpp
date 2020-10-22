@@ -3,7 +3,7 @@
 #include "mainwindow.h"
 #include "globle.h"
 #include  <QtDebug>
-//#include "allstuinform.h"
+#include "allstuinform.h"
 //#include "findscore.h"
 //#include "dormfind.h"
 //#include "coursefind.h"
@@ -79,9 +79,9 @@ void studentForm::on_pushButton_3_clicked()
         qDebug()<<list_all_student[i];
     }
 
-//    this->hide();
-//    AllstuInform  *as=new AllstuInform;
-//    as->show();
+    this->hide();
+    AllstuInform  *as=new AllstuInform;
+    as->show();
 }
 
 void studentForm::on_pushButton_student_findscore_clicked()
