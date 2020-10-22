@@ -36,7 +36,6 @@ studentForm::~studentForm()
 
 /*void studentForm::receiveData(QString data)
 {
-
    // qDebug()<<"值是:"<<data;
    // ui->label_user->setText("122");
 }
@@ -47,26 +46,12 @@ void studentForm::on_pushButton_clicked()
     MainWindow *h;
     this->hide();
     h=new MainWindow  ;
-
     h->show();
 }
 
 void studentForm::on_pushButton_3_clicked()
 {
-
-    QSqlDatabase db;
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("studentmanager");
-    db.setUserName(sqluser);
-    db.setPassword(sqlpass);
-    if (!db.open())
-        qDebug() << "Failed to connect to root mysql admin";
-    else qDebug() << "open";
-
+    QSqlDatabase db = get_default_opened_db();
 
     QSqlQuery query(db);
     db.exec("SET NAMES 'GBK'");
@@ -88,24 +73,15 @@ void studentForm::on_pushButton_3_clicked()
         QString beizhu=query.value(9).toString();
         q<<id<<user<<pass<<sex<<age<<major<<banji<<address<<phonenumber<<beizhu;
         list_all_student.append(q);
-
-
-
-
     }
-
 
     for(int i=0;i<list_all_student.size();i++){
         qDebug()<<list_all_student[i];
-
     }
 
 //    this->hide();
 //    AllstuInform  *as=new AllstuInform;
-
 //    as->show();
-
-
 }
 
 void studentForm::on_pushButton_student_findscore_clicked()
@@ -113,27 +89,11 @@ void studentForm::on_pushButton_student_findscore_clicked()
 //    this->hide();
 //    findscore *ff=new findscore;
 //    ff->show();
-
-
-
-
 }
 
 void studentForm::on_stu_find_dormButton_clicked()
 {
-    QSqlDatabase db;
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("localhost");
-    db.setDatabaseName("studentmanager");
-    db.setUserName(sqluser);
-    db.setPassword(sqlpass);
-    if (!db.open())
-        qDebug() << "Failed to connect to root mysql admin";
-    else qDebug() << "open";
-
+    QSqlDatabase db = get_default_opened_db();
 
     QSqlQuery query(db);
     db.exec("SET NAMES 'GBK'");
@@ -152,7 +112,6 @@ void studentForm::on_stu_find_dormButton_clicked()
 
         q1<<dormnum <<id<<name<<sex<<bednum<<beizhu;
         list_all_dormstudent.append(q1);
-
     }
 
 //    this->hide();

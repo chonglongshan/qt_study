@@ -28,19 +28,9 @@ void MainWindow::on_LoginButton_clicked()
     QString username = ui->Login_username->text();
     QString password = ui->Login_password->text();
     qDebug()<<"用户名："<<username<<"密码:"<<password;
-    QSqlDatabase db;
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("192.168.125.128");
-    //db.setPort(3306);
-    db.setDatabaseName("test");
-    db.setUserName(sqluser);
-    db.setPassword(sqlpass);
-    if (!db.open())
-        qDebug() << "Failed to connect to root mysql admin";
-    else qDebug() << "open";
+
+    QSqlDatabase db = get_default_opened_db();
+
     if( ui->radioButton->isChecked()){
         QSqlQuery query(db);
         db.exec("SET NAMES 'GBK'");
