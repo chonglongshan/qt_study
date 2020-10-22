@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QPushButton>
 #include <QRadioButton>
-//#include "studentform.h"
+#include "studentform.h"
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
@@ -25,14 +25,14 @@ public:
 private slots:
     void on_LoginButton_clicked();
     void show2();
-   // void open();
+    // void open();
     void on_remitButton_clicked();
 
 signals:
     void sendData(QString);
 private:
     Ui::MainWindow *ui;
-//    studentForm *f;
-//    manger *m;
+    studentForm *f;
+    //    manger *m;
 };
 #endif // MAINWINDOW_H

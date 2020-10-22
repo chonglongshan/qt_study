@@ -80,10 +80,10 @@ void MainWindow::on_LoginButton_clicked()
                 password_qj=password;
                 username_qj=username;
                 T=true;
-//                this->hide();
-//                f=new studentForm;
-//                //     emit sendData(username+"&"+password);
-//                f->show();
+                this->hide();
+                f=new studentForm;
+                //     emit sendData(username+"&"+password);
+                f->show();
             }
         }
 

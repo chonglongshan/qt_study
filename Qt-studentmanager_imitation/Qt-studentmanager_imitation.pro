@@ -11,14 +11,17 @@ CONFIG += c++11
 SOURCES += \
     globle.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    studentform.cpp
 
 HEADERS += \
     globle.h \
-    mainwindow.h
+    mainwindow.h \
+    studentform.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    studentform.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
