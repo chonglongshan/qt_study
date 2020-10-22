@@ -12,15 +12,18 @@ SOURCES += \
     globle.cpp \
     main.cpp \
     mainwindow.cpp \
+    manger.cpp \
     studentform.cpp
 
 HEADERS += \
     globle.h \
     mainwindow.h \
+    manger.h \
     studentform.h
 
 FORMS += \
     mainwindow.ui \
+    manger.ui \
     studentform.ui
 
 # Default rules for deployment.

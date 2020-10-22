@@ -55,10 +55,10 @@ void MainWindow::on_LoginButton_clicked()
                 password_qj=password;
                 username_qj=username;
                 T1=true;
-//                this->hide();
-//                m=new manger;
-//                //    emit sendData(username+"&"+password);
-//                m->show();
+                this->hide();
+                m=new manger;
+                //    emit sendData(username+"&"+password);
+                m->show();
             }
         }
 

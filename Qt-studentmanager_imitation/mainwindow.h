@@ -8,7 +8,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
-//#include<manger.h>
+#include<manger.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,6 +33,6 @@ signals:
 private:
     Ui::MainWindow *ui;
     studentForm *f;
-    //    manger *m;
+    manger *m;
 };
 #endif // MAINWINDOW_H
