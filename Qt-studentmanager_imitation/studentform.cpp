@@ -9,7 +9,7 @@
 #include "coursefind.h"
 #include "awardfind.h"
 #include "findclass.h"
-//#include "moneyfind.h"
+#include "moneyfind.h"
 studentForm::studentForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::studentForm)
@@ -141,8 +141,7 @@ void studentForm::on_stu_findclass_inforButton_clicked()
 
 void studentForm::on_stu_query_fee_Button_clicked()
 {
-//    this->hide();
-
-//    moneyfind *fe=new moneyfind;
-//    fe->show();
+    this->hide();
+    moneyfind *fe=new moneyfind;
+    fe->show();
 }

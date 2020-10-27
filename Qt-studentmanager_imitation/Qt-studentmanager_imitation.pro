@@ -19,6 +19,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     manger.cpp \
+    moneyfind.cpp \
     studentform.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     globle.h \
     mainwindow.h \
     manger.h \
+    moneyfind.h \
     studentform.h
 
 FORMS += \
@@ -42,6 +44,7 @@ FORMS += \
     findscore.ui \
     mainwindow.ui \
     manger.ui \
+    moneyfind.ui \
     studentform.ui
 
 # Default rules for deployment.
