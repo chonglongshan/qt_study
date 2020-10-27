@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     allstuinform.cpp \
+    findscore.cpp \
     globle.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     allstuinform.h \
+    findscore.h \
     globle.h \
     mainwindow.h \
     manger.h \
@@ -25,6 +27,7 @@ HEADERS += \
 
 FORMS += \
     allstuinform.ui \
+    findscore.ui \
     mainwindow.ui \
     manger.ui \
     studentform.ui

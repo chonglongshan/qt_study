@@ -4,7 +4,7 @@
 #include "globle.h"
 #include  <QtDebug>
 #include "allstuinform.h"
-//#include "findscore.h"
+#include "findscore.h"
 //#include "dormfind.h"
 //#include "coursefind.h"
 //#include "awardfind.h"
@@ -86,9 +86,9 @@ void studentForm::on_pushButton_3_clicked()
 
 void studentForm::on_pushButton_student_findscore_clicked()
 {
-//    this->hide();
-//    findscore *ff=new findscore;
-//    ff->show();
+    this->hide();
+    findscore *ff=new findscore;
+    ff->show();
 }
 
 void studentForm::on_stu_find_dormButton_clicked()
