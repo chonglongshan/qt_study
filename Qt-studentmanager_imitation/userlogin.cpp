@@ -2,8 +2,8 @@
 #include "ui_userlogin.h"
 #include "insertlogin.h"
 #include "manger.h"
-//#include "deletelogin.h"
-//#include "updatelogin.h"
+#include "deletelogin.h"
+#include "updatelogin.h"
 userlogin::userlogin(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::userlogin)

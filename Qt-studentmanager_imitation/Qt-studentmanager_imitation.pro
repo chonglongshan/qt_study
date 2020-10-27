@@ -11,8 +11,14 @@ CONFIG += c++11
 SOURCES += \
     allstuinform.cpp \
     awardfind.cpp \
+    awardmanage.cpp \
+    classmanage.cpp \
     coursefind.cpp \
+    coursemanage.cpp \
+    deletelogin.cpp \
     dormfind.cpp \
+    dormmanage.cpp \
+    feemanage.cpp \
     findclass.cpp \
     findscore.cpp \
     globle.cpp \
@@ -21,14 +27,26 @@ SOURCES += \
     mainwindow.cpp \
     manger.cpp \
     moneyfind.cpp \
+    scoremanage.cpp \
+    seeallstuinfor.cpp \
+    seedorminfor.cpp \
+    student.cpp \
     studentform.cpp \
+    stuinformanage.cpp \
+    updatelogin.cpp \
     userlogin.cpp
 
 HEADERS += \
     allstuinform.h \
     awardfind.h \
+    awardmanage.h \
+    classmanage.h \
     coursefind.h \
+    coursemanage.h \
+    deletelogin.h \
     dormfind.h \
+    dormmanage.h \
+    feemanage.h \
     findclass.h \
     findscore.h \
     globle.h \
@@ -36,21 +54,38 @@ HEADERS += \
     mainwindow.h \
     manger.h \
     moneyfind.h \
+    scoremanage.h \
+    seeallstuinfor.h \
+    seedorminfor.h \
+    student.h \
     studentform.h \
+    stuinformanage.h \
+    updatelogin.h \
     userlogin.h
 
 FORMS += \
     allstuinform.ui \
     awardfind.ui \
+    awardmanage.ui \
+    classmanage.ui \
     coursefind.ui \
+    coursemanage.ui \
+    deletelogin.ui \
     dormfind.ui \
+    dormmanage.ui \
+    feemanage.ui \
     findclass.ui \
     findscore.ui \
     insertlogin.ui \
     mainwindow.ui \
     manger.ui \
     moneyfind.ui \
+    scoremanage.ui \
+    seeallstuinfor.ui \
+    seedorminfor.ui \
     studentform.ui \
+    stuinformanage.ui \
+    updatelogin.ui \
     userlogin.ui
 
 # Default rules for deployment.
@@ -59,3 +94,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 QT += sql
+
+SUBDIRS += \
+    studenntManger.pro
