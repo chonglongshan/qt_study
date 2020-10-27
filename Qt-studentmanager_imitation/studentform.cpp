@@ -6,7 +6,7 @@
 #include "allstuinform.h"
 #include "findscore.h"
 #include "dormfind.h"
-//#include "coursefind.h"
+#include "coursefind.h"
 //#include "awardfind.h"
 //#include "findclass.h"
 //#include "moneyfind.h"
@@ -120,10 +120,9 @@ void studentForm::on_stu_find_dormButton_clicked()
 
 void studentForm::on_stu_find_coursebutton_clicked()
 {
-//    this->hide();
-//    coursefind *fg=new coursefind;
-//    fg->show();
-
+    this->hide();
+    coursefind *fg=new coursefind;
+    fg->show();
 }
 
 void studentForm::on_stu_award_button_clicked()
