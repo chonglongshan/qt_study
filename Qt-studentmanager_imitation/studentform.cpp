@@ -8,7 +8,7 @@
 #include "dormfind.h"
 #include "coursefind.h"
 #include "awardfind.h"
-//#include "findclass.h"
+#include "findclass.h"
 //#include "moneyfind.h"
 studentForm::studentForm(QWidget *parent) :
     QWidget(parent),
@@ -134,9 +134,9 @@ void studentForm::on_stu_award_button_clicked()
 
 void studentForm::on_stu_findclass_inforButton_clicked()
 {
-//    this->hide();
-//    findclass *fg=new findclass;
-//    fg->show();
+    this->hide();
+    findclass *fg=new findclass;
+    fg->show();
 }
 
 void studentForm::on_stu_query_fee_Button_clicked()

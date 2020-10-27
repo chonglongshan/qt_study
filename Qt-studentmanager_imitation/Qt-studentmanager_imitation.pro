@@ -13,6 +13,7 @@ SOURCES += \
     awardfind.cpp \
     coursefind.cpp \
     dormfind.cpp \
+    findclass.cpp \
     findscore.cpp \
     globle.cpp \
     main.cpp \
@@ -25,6 +26,7 @@ HEADERS += \
     awardfind.h \
     coursefind.h \
     dormfind.h \
+    findclass.h \
     findscore.h \
     globle.h \
     mainwindow.h \
@@ -36,6 +38,7 @@ FORMS += \
     awardfind.ui \
     coursefind.ui \
     dormfind.ui \
+    findclass.ui \
     findscore.ui \
     mainwindow.ui \
     manger.ui \
