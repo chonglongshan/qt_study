@@ -1,6 +1,6 @@
 #include "userlogin.h"
 #include "ui_userlogin.h"
-//#include "insertlogin.h"
+#include "insertlogin.h"
 #include "manger.h"
 //#include "deletelogin.h"
 //#include "updatelogin.h"
@@ -18,9 +18,9 @@ userlogin::~userlogin()
 
 void userlogin::on_insert_loginButton_clicked()
 {
-//    this->hide();
-//    insertlogin *wq=new insertlogin;
-//    wq->show();
+    this->hide();
+    insertlogin *wq=new insertlogin;
+    wq->show();
 }
 
 void userlogin::on_user_login_back_clicked()

@@ -16,6 +16,7 @@ SOURCES += \
     findclass.cpp \
     findscore.cpp \
     globle.cpp \
+    insertlogin.cpp \
     main.cpp \
     mainwindow.cpp \
     manger.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     findclass.h \
     findscore.h \
     globle.h \
+    insertlogin.h \
     mainwindow.h \
     manger.h \
     moneyfind.h \
@@ -44,6 +46,7 @@ FORMS += \
     dormfind.ui \
     findclass.ui \
     findscore.ui \
+    insertlogin.ui \
     mainwindow.ui \
     manger.ui \
     moneyfind.ui \
