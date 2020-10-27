@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     allstuinform.cpp \
+    awardfind.cpp \
     coursefind.cpp \
     dormfind.cpp \
     findscore.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 
 HEADERS += \
     allstuinform.h \
+    awardfind.h \
     coursefind.h \
     dormfind.h \
     findscore.h \
@@ -31,6 +33,7 @@ HEADERS += \
 
 FORMS += \
     allstuinform.ui \
+    awardfind.ui \
     coursefind.ui \
     dormfind.ui \
     findscore.ui \
