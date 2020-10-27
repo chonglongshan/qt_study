@@ -2,7 +2,7 @@
 #include "ui_manger.h"
 #include"globle.h"
 #include"mainwindow.h"
-//#include "userlogin.h"
+#include "userlogin.h"
 //#include "stuinformanage.h"
 //#include "dormmanage.h"
 //#include "awardmanage.h"
@@ -18,9 +18,6 @@ manger::manger(QWidget *parent) :
     QLabel *lab= ui->label_useradmin;
     lab->setStyleSheet("color:#ff6600;");
     lab->setText("欢迎"+username_qj);
-
-
-
 }
 
 manger::~manger()
@@ -33,15 +30,14 @@ void manger::on_pushButton_9_clicked()
     MainWindow *dh;
     this->hide();
     dh=new MainWindow  ;
-
     dh->show();
 }
 
 void manger::on_userloginButton_clicked()
 {
-//    this->hide();
-//    userlogin *ti=new userlogin;
-//    ti->show();
+    this->hide();
+    userlogin *ti=new userlogin;
+    ti->show();
 }
 
 void manger::on_stu_inform_guanlipushButton_clicked()

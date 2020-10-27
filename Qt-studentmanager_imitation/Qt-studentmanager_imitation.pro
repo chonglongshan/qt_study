@@ -20,7 +20,8 @@ SOURCES += \
     mainwindow.cpp \
     manger.cpp \
     moneyfind.cpp \
-    studentform.cpp
+    studentform.cpp \
+    userlogin.cpp
 
 HEADERS += \
     allstuinform.h \
@@ -33,7 +34,8 @@ HEADERS += \
     mainwindow.h \
     manger.h \
     moneyfind.h \
-    studentform.h
+    studentform.h \
+    userlogin.h
 
 FORMS += \
     allstuinform.ui \
@@ -45,7 +47,8 @@ FORMS += \
     mainwindow.ui \
     manger.ui \
     moneyfind.ui \
-    studentform.ui
+    studentform.ui \
+    userlogin.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
