@@ -5,7 +5,7 @@
 #include  <QtDebug>
 #include "allstuinform.h"
 #include "findscore.h"
-//#include "dormfind.h"
+#include "dormfind.h"
 //#include "coursefind.h"
 //#include "awardfind.h"
 //#include "findclass.h"
@@ -25,7 +25,6 @@ studentForm::studentForm(QWidget *parent) :
     lab->setStyleSheet("color:#ff6600;");
     lab->setText("欢迎"+username_qj);
     setWindowTitle(QString("设计者8001716066，陈永喆"));
-
 }
 
 studentForm::~studentForm()
@@ -114,10 +113,9 @@ void studentForm::on_stu_find_dormButton_clicked()
         list_all_dormstudent.append(q1);
     }
 
-//    this->hide();
-//    dormfind *fd=new dormfind;
-//    fd->show();
-
+    this->hide();
+    dormfind *fd=new dormfind;
+    fd->show();
 }
 
 void studentForm::on_stu_find_coursebutton_clicked()
