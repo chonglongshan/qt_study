@@ -13,6 +13,9 @@ qt学习练手
 - bbb
 ```
 
+**2020-10-28 P2**
+1. 按 HmiFuncDesigner 的工程目录结构，重新创建子目录项目及 Widget 项目 ProjectManager 。
+
 **2020-10-28 P1**
 1. 根据 HmiFuncDesigner 进行学习仿写。
 - 新建 HmiFuncDesigner 的仿品项目，类型是 子目录项目。
