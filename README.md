@@ -13,6 +13,22 @@ qt学习练手
 - bbb
 ```
 
+**2020-10-29 P1**
+1. 原 HmiFuncDesigner 项目 main 文件中使用的 QtSingleApplication 、 QTextCodec 、 QFont 、 PluginManager 都暂不仿写。
+2. 与原项目文件名大小写保持一致。
+3. 将 MainWindow.ui 移植过来。
+4. 创建 images.qrc 并将 images 文件夹和图片资源移植过来。
+5. 测试 QMenu 中 QAction 的 toolTip 显示：
+- QMenu 的 toolTipsVisible 是影响菜单上的各个子项，即 QAction 的 toolTip 的显示。
+- Qt Creator 设计器中添加 QAction 时，toolTip 会默认填入值，但这时该值并不会生效。需要手动再去点击一下该属性或者修改内容，在保存使其生效。
+  - 也即，猜想是各控件的 toolTip 都需要点击或者修改来激活。
+- 鼠标位于  QAction 上时，如果勾选了 toolTipsVisible ，则显示 QAction 的 toolTip ；否则显示 QMenu 的 toolTip <即 QWidget 的 toolTip >，如果有的话。
+  - 也即，猜想是当勾选了 toolTipsVisible 时， QAction 的 toolTip 优先于  QMenu 的 toolTip 。
+- 鼠标位于 QMenu 中非任何  QAction 上时，无论是否勾选了 toolTipsVisible 都显示 QMenu 的 toolTip ，如果有的话。
+  - 也即，猜想是鼠标当前实际是定位到 QMenu 上的。
+- 不太好的地方：当鼠标已经从 QAction 移动到另一个没有设置 toolTip 的 QAction 上是，前一个 QAction 显示的 toolTip 并不能马上消失。
+- 不太好的地方： QAction 的 toolTip 一旦激活就必须输入内容。只能输入空格来模拟无内容。此时不会显示空白提示框，当然也没能让前一个 toolTip 马上消失。
+
 **2020-10-28 P2**
 1. 按 HmiFuncDesigner 的工程目录结构，重新创建子目录项目及 Widget 项目 ProjectManager 。
 
