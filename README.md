@@ -13,6 +13,15 @@ qt学习练手
 - bbb
 ```
 
+**2020-11-05 P1**
+1. qt designer 的“编辑动作”窗口中 icon theme 可能只是针对类unix系统的。
+- setThemeSearchPaths()
+- themeSearchPaths()
+- setThemeName()
+- themeName()
+- fromTheme()
+- Note: By default, only X11 will support themed icons. In order to use themed icons on Mac and Windows, you will have to bundle a compliant theme in one of your themeSearchPaths() and set the appropriate themeName().
+
 **2020-10-29 P1**
 1. 原 HmiFuncDesigner 项目 main 文件中使用的 QtSingleApplication 、 QTextCodec 、 QFont 、 PluginManager 都暂不仿写。
 2. 与原项目文件名大小写保持一致。
