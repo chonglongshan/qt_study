@@ -13,6 +13,19 @@ qt学习练手
 - bbb
 ```
 
+**2020-11-07 P1**
+1. 仿写上下文菜单 (QMenu) 的右键显示。
+- new 出来的 QMenu ，后续如果没有主动释放，将一直保存在程序中。当其指定的父窗口销毁时，所有 new 出来的 QMenu 会自动随父窗口一起销毁。
+
+
+**2020-11-06 P1**
+1. 不仿写：
+- 原项目封装了 void enableToolBar(QString text);  来使用 void QWidget::setEnabled(bool) 函数控制启用（亮）/禁用（灰）工具栏。
+- 原项目使用了 setContextMenuPolicy(Qt::DefaultContextMenu); 来启用 void MainWindow::contextMenuEvent(QContextMenuEvent *event) 事件处理。其实默认（ Qt::DefaultContextMenu ）是启用的。
+2. 可以添加多个工具栏 (QToolBar) 。
+3. Non-portable path to file ”ui_XXX.h“?
+- 将头文件大小写改为与自动生成的 ui 头文件一致。
+
 **2020-11-05 P1**
 1. qt designer 的“编辑动作”窗口中 icon theme 可能只是针对类unix系统的。
 - setThemeSearchPaths()
