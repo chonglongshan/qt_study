@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include <QStandardItemModel>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -20,5 +22,11 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+
+private:
+    QStandardItemModel *pTreeViewProjectModel;
+
+    QStandardItem *pProjectItem;
+    QStandardItem *pSystemParameters;
 };
 #endif // MAINWINDOW_H

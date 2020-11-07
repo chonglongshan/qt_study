@@ -11,6 +11,29 @@ MainWindow::MainWindow(QWidget *parent)
 
     // 原项目封装了 void enableToolBar(QString text);  来使用 void QWidget::setEnabled(bool) 函数控制启用（亮）/禁用（灰）工具栏
     // 原项目使用了 setContextMenuPolicy(Qt::DefaultContextMenu); 来启用 void MainWindow::contextMenuEvent(QContextMenuEvent *event) 事件处理。其实默认（ Qt::DefaultContextMenu ）是启用的。
+
+    //ui->treeViewProject->setHeaderHidden(true);
+    pTreeViewProjectModel = new QStandardItemModel();
+
+//    // setHeaderData 什么作用？用不来？
+//    pTreeViewProjectModel->setHeaderData(0, Qt::Horizontal, "xyz");
+//    pTreeViewProjectModel->setHeaderData(1, Qt::Horizontal, "xyz");
+//    pTreeViewProjectModel->setHeaderData(0, Qt::Vertical, "xyz");
+//    pTreeViewProjectModel->setHeaderData(1, Qt::Vertical, "xyz");
+    // 可以使用其 Model 的 setHorizontalHeaderLabels(const QStringList &labels) 来更改标头文本。
+    pTreeViewProjectModel->setHorizontalHeaderLabels(QStringList() << "xyz");
+
+    pProjectItem = new QStandardItem(QIcon(":/images/pj_pro.png"), tr("未创建工程"));
+    pProjectItem->setEditable(false);
+    pSystemParameters = new QStandardItem(QIcon(":/images/pj_sys.png"), tr("系统参数"));
+    //pSystemParameters->setEditable(false);
+
+    pTreeViewProjectModel->appendRow(pProjectItem);
+    //pTreeViewProjectModel->appendRow(pSystemParameters);
+    pProjectItem->appendRow(pSystemParameters);
+
+    ui->treeViewProject->setModel(pTreeViewProjectModel);
+    ui->treeViewProject->expandAll();
 }
 
 MainWindow::~MainWindow()

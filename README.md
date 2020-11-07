@@ -13,10 +13,22 @@ qt学习练手
 - bbb
 ```
 
+**2020-11-07 P2**
+1. 仿写 QTreeView ，了解 model/view 的操作。
+- QTreeView 默认有一个 header 标头。 （其实是其 Model (QStandardItemModel) 有一个默认标头？）
+  - 可以使用其 Model 的 setHorizontalHeaderLabels(const QStringList &labels) 来更改标头文本。
+  - pTreeViewProjectModel->setHorizontalHeaderLabels(QStringList() << "xyz");
+  - setHeaderData 什么作用？用不来？
+- QTreeView 添加项，是添加为其标头的子项。
+  - 原项目使用隐藏标头，使得子项显示效果为顶层。
+- 使用 QStandardItem 来构造项。
+  - 项的 appendRow(QStandardItem *aitem) 是将 aitem 作为该项的子项来添加。
+  - 项文本默认是可编辑的。
+
 **2020-11-07 P1**
 1. 仿写上下文菜单 (QMenu) 的右键显示。
 - new 出来的 QMenu ，后续如果没有主动释放，将一直保存在程序中。当其指定的父窗口销毁时，所有 new 出来的 QMenu 会自动随父窗口一起销毁。
-
+- QAction 对应得槽函数暂未实现。
 
 **2020-11-06 P1**
 1. 不仿写：
