@@ -13,6 +13,9 @@ qt学习练手
 - bbb
 ```
 
+**2020-11-08 P1**
+1. 仿写 ui 中的工程管理器 (QTreeView) 初始化。
+
 **2020-11-07 P2**
 1. 仿写 QTreeView ，了解 model/view 的操作。
 - QTreeView 默认有一个 header 标头。 （其实是其 Model (QStandardItemModel) 有一个默认标头？）
