@@ -2,6 +2,7 @@
 #include "ui_MainWindow.h"
 
 #include <QDebug>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -22,7 +23,27 @@ MainWindow::~MainWindow()
 
 void MainWindow::contextMenuEvent(QContextMenuEvent *event)
 {
-//    qDebug() << "void MainWindow::contextMenuEvent(QContextMenuEvent *event)";
+    qDebug() << "qDebug(): void MainWindow::contextMenuEvent(QContextMenuEvent *event)";
+    qInfo() << "qInfo(): void MainWindow::contextMenuEvent(QContextMenuEvent *event)";
+
+    //QFile *file = new QFile("lz_log.txt");
+    //QIODevice *lz_file = new QFile("lz_log.txt");
+    QFile *file = new QFile("./lz_log.txt");
+    //file->open(QIODevice::ReadWrite | QIODevice::Append);
+    //QDebug(lz_file);
+    //QDebug qdb = QDebug(lz_file);
+    QDebug qdb = QDebug(file);
+    qdb << "void MainWindow::contextMenuEvent(QContextMenuEvent *event)";
+
+    QMessageLogger msg_logger(QT_MESSAGELOG_FILE, QT_MESSAGELOG_LINE, QT_MESSAGELOG_FUNC);
+    msg_logger.debug() << "void MainWindow::contextMenuEvent(QContextMenuEvent *event)";
+
+    //LZLogger
+
+//    QMessageLogger msg_logger(QT_MESSAGELOG_FILE, QT_MESSAGELOG_LINE, QT_MESSAGELOG_FUNC);
+//    msg_logger.context
+//    QDebug qdb2 = QMessageLogger(QT_MESSAGELOG_FILE, QT_MESSAGELOG_LINE, QT_MESSAGELOG_FUNC).debug();
+//    qdb2.stream;
 
 //    // new 出来的 QMenu ，后续如果没有主动释放，将一直保存在程序中。当其指定的父窗口销毁时，所有 new 出来的 QMenu 会自动随父窗口一起销毁。
 //    QMenu *pMenu = new QMenu(this);
