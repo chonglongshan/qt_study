@@ -55,8 +55,9 @@
 
 int main(int argc, char *argv[])
 {
-    // Uncomment the following line to enable logging
-    // QLoggingCategory::setFilterRules(QStringLiteral("qt.modbus* = true"));
+    // TODO uncomment this line before release
+    // right now we always need it
+    QLoggingCategory::setFilterRules(QStringLiteral("qt.modbus* = true"));
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
