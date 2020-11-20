@@ -13,6 +13,19 @@ qt学习练手
 - bbb
 ```
 
+**2020-11-20 P1**
+1. 了解MOBUS的开发。使用 QModbus ， RTU 模式。 QT 5.15.0 的编译运行环境。
+- QT 5.15.0 的示例 Modbus Master example  【master】
+  - 可以成功调试通。
+- QT 5.12.5 的示例 Modbus Master example  【master】
+  - 也可以成功调试通。
+2. 使用 QT 5.12.5 的环境编译运行。
+- QT 5.12.5 的示例 Modbus Master example  【master】
+  - request timeout 报错，qt.modbus: (RTU client) Send failed: 0x0200000008
+- QT 5.15.0 的示例 Modbus Master example  【master】
+  - 无法编译通过。 error: Could not find feature modbus-serialport.
+- QT 5.15.0 的编译运行环境 又不好调试源码？？？？
+
 **2020-11-19 P1**
 1. 调测日志记录功能。
 - 引入的 CTool 中的日志功能，有很多是使用到 windows 平台特定的东西。没法直接移植使用。

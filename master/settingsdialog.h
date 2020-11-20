@@ -51,8 +51,11 @@
 #ifndef SETTINGSDIALOG_H
 #define SETTINGSDIALOG_H
 
+#include <QtSerialBus/qtserialbusglobal.h>
 #include <QDialog>
+#if QT_CONFIG(modbus_serialport)
 #include <QSerialPort>
+#endif
 
 QT_BEGIN_NAMESPACE
 
@@ -68,13 +71,13 @@ class SettingsDialog : public QDialog
 
 public:
     struct Settings {
-//        int parity = QSerialPort::EvenParity;
-//        int baud = QSerialPort::Baud19200;
-        int parity = QSerialPort::NoParity;
-        int baud = QSerialPort::Baud9600;
+#if QT_CONFIG(modbus_serialport)
+        int parity = QSerialPort::EvenParity;
+        int baud = QSerialPort::Baud19200;
         int dataBits = QSerialPort::Data8;
         int stopBits = QSerialPort::OneStop;
-        int responseTime = 3000;
+#endif
+        int responseTime = 1000;
         int numberOfRetries = 3;
     };
 
@@ -83,12 +86,9 @@ public:
 
     Settings settings() const;
 
-private slots:
-    void on_applyButton_clicked();
-
 private:
     Settings m_settings;
-    Ui::SettingsDialog *ui;
+    Ui::SettingsDialog *ui = nullptr;
 };
 
 #endif // SETTINGSDIALOG_H
