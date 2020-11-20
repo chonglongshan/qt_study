@@ -68,11 +68,13 @@ class SettingsDialog : public QDialog
 
 public:
     struct Settings {
-        int parity = QSerialPort::EvenParity;
-        int baud = QSerialPort::Baud19200;
+//        int parity = QSerialPort::EvenParity;
+//        int baud = QSerialPort::Baud19200;
+        int parity = QSerialPort::NoParity;
+        int baud = QSerialPort::Baud9600;
         int dataBits = QSerialPort::Data8;
         int stopBits = QSerialPort::OneStop;
-        int responseTime = 1000;
+        int responseTime = 3000;
         int numberOfRetries = 3;
     };
 
@@ -80,6 +82,9 @@ public:
     ~SettingsDialog();
 
     Settings settings() const;
+
+private slots:
+    void on_applyButton_clicked();
 
 private:
     Settings m_settings;

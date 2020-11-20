@@ -57,7 +57,24 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->parityCombo->setCurrentIndex(1);
+    int i = 0;
+    switch (m_settings.parity)
+    {
+    case QSerialPort::NoParity:
+        i = 0;
+        break;
+    case QSerialPort::EvenParity:
+        i = 1;
+        break;
+    case QSerialPort::OddParity:
+        i = 2;
+        break;
+    default:
+        i = 0;
+        break;
+    }
+    //ui->parityCombo->setCurrentIndex(1);
+    ui->parityCombo->setCurrentIndex(i);
     ui->baudCombo->setCurrentText(QString::number(m_settings.baud));
     ui->dataBitsCombo->setCurrentText(QString::number(m_settings.dataBits));
     ui->stopBitsCombo->setCurrentText(QString::number(m_settings.stopBits));
@@ -86,4 +103,9 @@ SettingsDialog::~SettingsDialog()
 SettingsDialog::Settings SettingsDialog::settings() const
 {
     return m_settings;
+}
+
+void SettingsDialog::on_applyButton_clicked()
+{
+
 }

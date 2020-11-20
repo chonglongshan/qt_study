@@ -58,6 +58,7 @@
 #include <QStandardItemModel>
 #include <QStatusBar>
 #include <QUrl>
+#include <QDebug>
 
 enum ModbusConnection {
     Serial,
@@ -162,7 +163,7 @@ void MainWindow::on_connectType_currentIndexChanged(int index)
     }
 
     connect(modbusDevice, &QModbusClient::errorOccurred, [this](QModbusDevice::Error) {
-        statusBar()->showMessage(modbusDevice->errorString(), 5000);
+        statusBar()->showMessage(modbusDevice->errorString() + "LLL", 5000);
     });
 
     if (!modbusDevice) {
@@ -185,14 +186,19 @@ void MainWindow::on_connectButton_clicked()
     statusBar()->clearMessage();
     if (modbusDevice->state() != QModbusDevice::ConnectedState) {
         if (static_cast<ModbusConnection> (ui->connectType->currentIndex()) == Serial) {
+            qDebug() << ui->portEdit->text();
             modbusDevice->setConnectionParameter(QModbusDevice::SerialPortNameParameter,
                 ui->portEdit->text());
+            qDebug() << m_settingsDialog->settings().parity;
             modbusDevice->setConnectionParameter(QModbusDevice::SerialParityParameter,
                 m_settingsDialog->settings().parity);
+            qDebug() << m_settingsDialog->settings().baud;
             modbusDevice->setConnectionParameter(QModbusDevice::SerialBaudRateParameter,
                 m_settingsDialog->settings().baud);
+            qDebug() << m_settingsDialog->settings().dataBits;
             modbusDevice->setConnectionParameter(QModbusDevice::SerialDataBitsParameter,
                 m_settingsDialog->settings().dataBits);
+            qDebug() << m_settingsDialog->settings().stopBits;
             modbusDevice->setConnectionParameter(QModbusDevice::SerialStopBitsParameter,
                 m_settingsDialog->settings().stopBits);
         } else {
@@ -200,10 +206,25 @@ void MainWindow::on_connectButton_clicked()
             modbusDevice->setConnectionParameter(QModbusDevice::NetworkPortParameter, url.port());
             modbusDevice->setConnectionParameter(QModbusDevice::NetworkAddressParameter, url.host());
         }
+        qDebug() << m_settingsDialog->settings().responseTime;
         modbusDevice->setTimeout(m_settingsDialog->settings().responseTime);
-        modbusDevice->setNumberOfRetries(m_settingsDialog->settings().numberOfRetries);
+        qDebug() << m_settingsDialog->settings().numberOfRetries;
+        //modbusDevice->setNumberOfRetries(m_settingsDialog->settings().numberOfRetries);
+        qDebug() << 0;
+        modbusDevice->setNumberOfRetries(0);
+
+        ////////////////////////////////////////////////////
+        qDebug() << "////////////////////////////////////////////////////";
+        qDebug() << static_cast<QModbusRtuSerialMaster *>(modbusDevice)->interFrameDelay();
+        qDebug() << dynamic_cast<QModbusRtuSerialMaster *>(modbusDevice)->interFrameDelay();
+        dynamic_cast<QModbusRtuSerialMaster *>(modbusDevice)->setInterFrameDelay(2000);
+        dynamic_cast<QModbusRtuSerialMaster *>(modbusDevice)->setInterFrameDelay(1000);
+        qDebug() << static_cast<QModbusRtuSerialMaster *>(modbusDevice)->interFrameDelay();
+        qDebug() << dynamic_cast<QModbusRtuSerialMaster *>(modbusDevice)->interFrameDelay();
+        ////////////////////////////////////////////////////
+        //modbusDevice
         if (!modbusDevice->connectDevice()) {
-            statusBar()->showMessage(tr("Connect failed: ") + modbusDevice->errorString(), 5000);
+            statusBar()->showMessage(tr("Connect failed: ") + modbusDevice->errorString() + "xxx", 5000);
         } else {
             ui->actionConnect->setEnabled(false);
             ui->actionDisconnect->setEnabled(true);
@@ -226,6 +247,11 @@ void MainWindow::onStateChanged(int state)
     else if (state == QModbusDevice::ConnectedState)
         ui->connectButton->setText(tr("Disconnect"));
 }
+void MainWindow::lzSlotTimeChanged()
+{
+    //
+    qDebug() << "lzSlotTimeChanged";
+}
 
 void MainWindow::on_readButton_clicked()
 {
@@ -234,7 +260,16 @@ void MainWindow::on_readButton_clicked()
     ui->readValue->clear();
     statusBar()->clearMessage();
 
-    if (auto *reply = modbusDevice->sendReadRequest(readRequest(), ui->serverEdit->value())) {
+    qDebug() << "------------------------------------------------------";
+    //qDebug() << readRequest();
+    qDebug() << ui->serverEdit->value();
+    connect(modbusDevice, &QModbusClient::timeoutChanged, this, &MainWindow::lzSlotTimeChanged);
+    //if (auto *reply = modbusDevice->sendReadRequest(readRequest(), ui->serverEdit->value())) {
+    const QModbusDataUnit &d = readRequest();
+    int a = ui->serverEdit->value();
+    auto *reply = modbusDevice->sendReadRequest(d, a);
+    if (reply)
+    {
         if (!reply->isFinished())
             connect(reply, &QModbusReply::finished, this, &MainWindow::readReady);
         else
@@ -259,11 +294,11 @@ void MainWindow::readReady()
             ui->readValue->addItem(entry);
         }
     } else if (reply->error() == QModbusDevice::ProtocolError) {
-        statusBar()->showMessage(tr("Read response error: %1 (Mobus exception: 0x%2)").
+        statusBar()->showMessage(tr("1111  Read response error: %1 (Mobus exception: 0x%2)").
                                     arg(reply->errorString()).
                                     arg(reply->rawResult().exceptionCode(), -1, 16), 5000);
     } else {
-        statusBar()->showMessage(tr("Read response error: %1 (code: 0x%2)").
+        statusBar()->showMessage(tr("2222  Read response error: %1 (code: 0x%2)").
                                     arg(reply->errorString()).
                                     arg(reply->error(), -1, 16), 5000);
     }
@@ -355,10 +390,15 @@ QModbusDataUnit MainWindow::readRequest() const
         static_cast<QModbusDataUnit::RegisterType> (ui->writeTable->currentData().toInt());
 
     int startAddress = ui->readAddress->value();
+    //int startAddress = 0;
     Q_ASSERT(startAddress >= 0 && startAddress < 10);
 
     // do not go beyond 10 entries
     int numberOfEntries = qMin(ui->readSize->currentText().toInt(), 10 - startAddress);
+    qDebug() << "++++++++++++++++++++++++++";
+    qDebug() << table;
+    qDebug() << startAddress;
+    qDebug() << numberOfEntries;
     return QModbusDataUnit(table, startAddress, numberOfEntries);
 }
 

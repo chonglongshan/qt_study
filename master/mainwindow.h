@@ -95,6 +95,8 @@ private slots:
     void on_connectType_currentIndexChanged(int);
     void on_writeTable_currentIndexChanged(int);
 
+    void lzSlotTimeChanged();
+
 private:
     Ui::MainWindow *ui;
     QModbusReply *lastRequest;
