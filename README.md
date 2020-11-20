@@ -13,6 +13,10 @@ qt学习练手
 - bbb
 ```
 
+**2020-11-20 P2**
+1. QT 5.12.5 的 MOBUS 相关功能又 BUG 。QT 5.15.0 中好像修复了该问题。
+- QModbusRtuSerialMaster 的读取操作会失败，报 request timeout 报错，qt.modbus: (RTU client) Send failed: 0x0200000008
+
 **2020-11-20 P1**
 1. 了解MOBUS的开发。使用 QModbus ， RTU 模式。 QT 5.15.0 的编译运行环境。
 - QT 5.15.0 的示例 Modbus Master example  【master】
