@@ -367,3 +367,37 @@ void MainWindow::on_pushButton_6_clicked()
     modbus_close(ctx);
     modbus_free(ctx);
 }
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    modbus_t *ctx = nullptr;
+    ctx = modbus_new_rtu("com3", 9600, 'N', 8, 1);
+    if (ctx == nullptr) {
+        fprintf(stderr, "Unable to allocate libmodbus context\n");
+        return;
+    }
+    modbus_set_debug(ctx, TRUE);
+    modbus_set_slave(ctx, 1);
+
+    if (modbus_connect(ctx) == -1) {
+        fprintf(stderr, "Connection failed: %s\n", modbus_strerror(errno));
+        modbus_free(ctx);
+        return;
+    }
+    int rc;
+    qDebug() << "rc:" << rc;
+    uint8_t *tab_rp_bits = nullptr;
+    size_t nb_points = 0x16;
+    tab_rp_bits = static_cast<uint8_t *>(malloc(nb_points * sizeof(uint8_t)));
+    memset(tab_rp_bits, 0, nb_points * sizeof(uint8_t));
+    /** DISCRETE INPUTS **/
+    rc = modbus_read_input_bits(ctx, 0x0000, 8, tab_rp_bits);
+    for (size_t i = 0; i < nb_points; ++i)
+    {
+        //
+        qDebug() << tab_rp_bits[i];
+    }
+
+    modbus_close(ctx);
+    modbus_free(ctx);
+}
