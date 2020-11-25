@@ -12,6 +12,22 @@ qt学习练手
 - aaa
 - bbb
 ```
+**2020-11-25 P1**
+1. libmodbus 基本调测熟悉。
+
+**2020-11-21 P1**
+1. 将 libmodbus 的源码导入项目工程。
+- 没有 config.h 文件。将 config.h 文件注释掉。
+- error: undefined reference to `__imp_ntohl'
+  - 需要引入 win32 socket 。在 .pro 中加入 LIBS += -lws2_32 。
+2. 集成简单的使用 libmodbus 控制开关、等亮。
+- 关键操作 modbus_connect(ctx) 不要漏掉了。
+3. 使用 libmodbus 采集 IN 口状态。
+- modbus_read_input_bits
+
+**2020-11-20 P3**
+1. libmodbus 学习使用。
+- 添加 libmodbus 源码包。
 
 **2020-11-20 P2**
 1. QT 5.12.5 的 MOBUS 相关功能又 BUG 。QT 5.15.0 中好像修复了该问题。
