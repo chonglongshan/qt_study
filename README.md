@@ -20,6 +20,11 @@ qt学习练手
 - terminate 实测可以强制中断/关闭线程 ，即使带 event loop 。
 - terminate 的场景是极难再恢复原样。建议此种情况下，重新运行程序。
 - 线程内执行类似死循环，在 terminate 时将导致无法执行到所有释放。
+2. 问题：
+- QObject::moveToThread: Current thread (0x274a7cd8) is not the object's thread (0x0).
+- Cannot move to target thread (0x2cc93658)
+3. Another way to make code run in a separate thread, is to subclass QThread and reimplement run(). For example:
+- 另一种使用线程的方式。继承线程基类。
 
 **2020-11-28 P1**
 1. 浮点数与4个字节的转换。

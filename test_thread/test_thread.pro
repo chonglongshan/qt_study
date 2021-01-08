@@ -18,12 +18,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     lzthread.cpp \
     lzworkeraction.cpp \
+    lzworkerthread.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     lzthread.h \
     lzworkeraction.h \
+    lzworkerthread.h \
     mainwindow.h
 
 FORMS += \
