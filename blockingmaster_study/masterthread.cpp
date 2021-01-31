@@ -52,6 +52,7 @@
 
 #include <QSerialPort>
 #include <QTime>
+#include <QDebug>
 
 MasterThread::MasterThread(QObject *parent) :
     QThread(parent)
@@ -61,9 +62,12 @@ MasterThread::MasterThread(QObject *parent) :
 //! [0]
 MasterThread::~MasterThread()
 {
+    qDebug() << "MasterThread::~MasterThread";
     m_mutex.lock();
+    qDebug() << "lock point 4";
     m_quit = true;
     m_cond.wakeOne();
+    qDebug() << "wake point 2";
     m_mutex.unlock();
     wait();
 }
@@ -73,7 +77,9 @@ MasterThread::~MasterThread()
 void MasterThread::transaction(const QString &portName, int waitTimeout, const QString &request)
 {
 //! [1]
+    qDebug() << "MasterThread::transaction";
     const QMutexLocker locker(&m_mutex);
+    qDebug() << "lock point 1";
     m_portName = portName;
     m_waitTimeout = waitTimeout;
     m_request = request;
@@ -81,16 +87,29 @@ void MasterThread::transaction(const QString &portName, int waitTimeout, const Q
     if (!isRunning())
         start();
     else
+    {
         m_cond.wakeOne();
+        qDebug() << "wake point 1";
+    }
+
+    {// 睡眠
+        for(int i = 0; i < 3; ++i)
+        {
+            QThread::sleep(1);
+            qDebug() << "QThread::sleep 1 ... transaction";
+        }
+    }
 }
 //! [2] //! [3]
 
 //! [4]
 void MasterThread::run()
 {
+    qDebug() << "MasterThread::run";
     bool currentPortNameChanged = false;
 
     m_mutex.lock();
+    qDebug() << "lock point 2";
 //! [4] //! [5]
     QString currentPortName;
     if (currentPortName != m_portName) {
@@ -100,6 +119,14 @@ void MasterThread::run()
 
     int currentWaitTimeout = m_waitTimeout;
     QString currentRequest = m_request;
+
+    {// 睡眠
+        for(int i = 0; i < 10; ++i)
+        {
+            QThread::sleep(1);
+            qDebug() << "QThread::sleep 1 ... run";
+        }
+    }
     m_mutex.unlock();
 //! [5] //! [6]
     QSerialPort serial;
@@ -148,7 +175,9 @@ void MasterThread::run()
         }
 //! [9]  //! [13]
         m_mutex.lock();
+        qDebug() << "lock point 3";
         m_cond.wait(&m_mutex);
+        qDebug() << "wait point 1";
         if (currentPortName != m_portName) {
             currentPortName = m_portName;
             currentPortNameChanged = true;
