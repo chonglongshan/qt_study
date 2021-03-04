@@ -13,6 +13,24 @@ qt学习练手
 - bbb
 ```
 
+**2021-03-04 P2**
+1. 第三方库不直接加入子目录项目 qt_subdirs 中作为子项目。
+- 因为如果要调试第三方库的示例可能由于qt_subdirs中其他某个三方库有问题就不能编译运行。
+- 第三方库单独作为项目工程就行加载运行。
+- 子目录项目 qt_subdirs 中如果需要使用第三方库，只引入相应的源码内容(.pri)。
+
+**2021-02-22 P2**
+1. 创建 Qt 子目录项目 qt_subdirs .
+2. 在子项目管理中 继续创建子项目工程 temp 和应用程序工程 test_widget 。
+3. 引入第三方库/模块  Qt Xlsx 。
+- Qt Xlsx http://qtxlsx.debao.me/
+- dbzhang800/QtXlsxWriter https://github.com/dbzhang800/QtXlsxWriter
+4. 引入第三方库/模块 Log4Qt 。
+- MEONMedical/Log4Qt https://github.com/MEONMedical/Log4Qt 
+5. 加载第三方库工程
+- 3rdparty/Log4Qt/log4qt.pro 
+- 3rdparty/QtXlsxWriter/qtxlsx.pro
+
 **2021-02-22 P1**
 1. 串口示例调试分析暂告一段落。
 
