@@ -29,3 +29,14 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+QT += xml network concurrent
+
+include(../../3rdparty/Log4Qt/build.pri)
+include(../../3rdparty/Log4Qt/g++.pri)
+include(../../3rdparty/Log4Qt/src/log4qt/log4qt.pri)
+
+DEFINES += LOG4QT_STATIC
+
+INCLUDEPATH += ../../3rdparty/Log4Qt/src
+INCLUDEPATH += ../../3rdparty/Log4Qt/src/log4qt
