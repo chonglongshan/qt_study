@@ -149,7 +149,16 @@ void MainWindow::readSettings()
 }
 
 void MainWindow::setCurrentFile(const QString &fileName)
-{INCOMPLETE_FUNCTION}
+{
+    curFile = fileName;
+    textEdit->document()->setModified(false);
+    setWindowModified(false);
+
+    QString shownName = curFile;
+    if (curFile.isEmpty())
+        shownName = "untitled.txt";
+    setWindowFilePath(shownName);
+}
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
