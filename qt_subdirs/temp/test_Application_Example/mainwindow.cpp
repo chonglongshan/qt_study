@@ -165,8 +165,22 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 bool MainWindow::maybeSave()
 {
-    INCOMPLETE_FUNCTION
-    return false;
+    if (!textEdit->document()->isModified())
+        return true;
+    const QMessageBox::StandardButton ret
+        = QMessageBox::warning(this, tr("Application"),
+                               tr("The document has been modified.\n"
+                                  "Do you want to save your changes?"),
+                               QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+    switch (ret) {
+    case QMessageBox::Save:
+        return save();
+    case QMessageBox::Cancel:
+        return false;
+    default:
+        break;
+    }
+    return true;
 }
 
 void MainWindow::writeSettings()
