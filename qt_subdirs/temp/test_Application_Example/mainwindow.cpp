@@ -42,6 +42,8 @@ void MainWindow::createActions()
     QToolBar *fileToolBar = addToolBar(tr("File"));
     const QIcon newIcon = QIcon::fromTheme("document-new", QIcon(":/images/new.png"));
     QAction *newAct = new QAction(newIcon, tr("&New"), this);
+    // StandardKey    Windows    macOS    KDE Plasma    GNOME
+    // New            Ctrl+N     Ctrl+N   Ctrl+N        Ctrl+N
     newAct->setShortcuts(QKeySequence::New);
     newAct->setStatusTip(tr("Create a new file"));
     connect(newAct, &QAction::triggered, this, &MainWindow::newFile);
@@ -66,6 +68,8 @@ void MainWindow::createActions()
 
     const QIcon saveAsIcon = QIcon::fromTheme("document-save-as");
     QAction *saveAsAct = fileMenu->addAction(saveAsIcon, tr("Save &As..."), this, &MainWindow::saveAs);
+    // StandardKey         Windows        macOS         KDE Plasma         GNOME
+    // SaveAs                             Ctrl+Shift+S                     Ctrl+Shift+S
     saveAsAct->setShortcuts(QKeySequence::SaveAs);
     saveAsAct->setStatusTip(tr("Save the document under a new name"));
 
@@ -74,7 +78,6 @@ void MainWindow::createActions()
     const QIcon exitIcon = QIcon::fromTheme("application-exit");
     QAction *exitAct = fileMenu->addAction(exitIcon, tr("E&xit"), this, &QWidget::close);
     exitAct->setShortcuts(QKeySequence::Quit);
-
     exitAct->setStatusTip(tr("Exit the application"));
 
     QMenu *editMenu = menuBar()->addMenu(tr("&Edit"));
@@ -83,7 +86,6 @@ void MainWindow::createActions()
 #ifndef QT_NO_CLIPBOARD
     const QIcon cutIcon = QIcon::fromTheme("edit-cut", QIcon(":/images/cut.png"));
     QAction *cutAct = new QAction(cutIcon, tr("Cu&t"), this);
-
     cutAct->setShortcuts(QKeySequence::Cut);
     cutAct->setStatusTip(tr("Cut the current selection's contents to the "
                             "clipboard"));
@@ -110,7 +112,6 @@ void MainWindow::createActions()
     editToolBar->addAction(pasteAct);
 
     menuBar()->addSeparator();
-
 #endif // !QT_NO_CLIPBOARD
 
     QMenu *helpMenu = menuBar()->addMenu(tr("&Help"));
