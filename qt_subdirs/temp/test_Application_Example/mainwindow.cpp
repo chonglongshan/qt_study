@@ -130,7 +130,9 @@ void MainWindow::createActions()
 }
 
 void MainWindow::createStatusBar()
-{INCOMPLETE_FUNCTION}
+{
+    statusBar()->showMessage(tr("Ready"));
+}
 
 void MainWindow::readSettings()
 {INCOMPLETE_FUNCTION}
