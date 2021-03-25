@@ -2,7 +2,7 @@
 
 #include <QtWidgets>
 
-#define INCOMPLETE_FUNCTION qDebug() << QString("incomplete function: %1").arg(QT_MESSAGELOG_FUNC);
+#define INCOMPLETE_FUNCTION qDebug() << tr("incomplete function: %1").arg(QT_MESSAGELOG_FUNC);
 
 MainWindow::MainWindow(QWidget *parent)
     : textEdit(new QPlainTextEdit)
@@ -32,7 +32,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::documentWasModified()
-{INCOMPLETE_FUNCTION}
+{
+    setWindowModified(textEdit->document()->isModified());
+}
 
 void MainWindow::createActions()
 {INCOMPLETE_FUNCTION}
@@ -66,3 +68,61 @@ bool MainWindow::maybeSave()
 
 void MainWindow::writeSettings()
 {INCOMPLETE_FUNCTION}
+
+void MainWindow::newFile()
+{
+    if (maybeSave())
+    {
+        textEdit->clear();
+        setCurrentFile(QString());
+    }
+}
+
+void MainWindow::open()
+{
+    if (maybeSave())
+    {
+        QString fileName = QFileDialog::getOpenFileName(this);
+        if (!fileName.isEmpty())
+            loadFile(fileName);
+    }
+}
+
+void MainWindow::loadFile(const QString &fileName)
+{INCOMPLETE_FUNCTION}
+
+bool MainWindow::save()
+{
+    if (curFile.isEmpty())
+    {
+        return saveAs();
+    }
+    else
+    {
+        return saveFile(curFile);
+    }
+}
+
+bool MainWindow::saveFile(const QString &fileName)
+{
+    INCOMPLETE_FUNCTION
+    return false;
+}
+
+bool MainWindow::saveAs()
+{
+    QFileDialog dialog(this);
+    dialog.setWindowModality(Qt::WindowModal);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    if (dialog.exec() != QDialog::Accepted)
+        return false;
+    return saveFile(dialog.selectedFiles().first());
+}
+
+void MainWindow::about()
+{
+   QMessageBox::about(this, tr("About Application"),
+            tr("The <b>Application</b> example demonstrates how to "
+               "write modern GUI applications using Qt, with a menu bar, "
+               "toolbars, and a status bar."));
+}
