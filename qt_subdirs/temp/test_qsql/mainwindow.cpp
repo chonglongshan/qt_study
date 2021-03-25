@@ -114,8 +114,9 @@ void MainWindow::on_pushButton_step_2_clicked()
 
 void MainWindow::on_pushButton_step_3_clicked()
 {
-    if (_lz_db.isOpen())
-    {
+//    if (_lz_db.isOpen())
+//    {
+// 查看 error 错误信息
         // 数据库 DDL 操作
         QString sql_table_exist = QString("select count(*) from sqlite_master where type='table' and name='%1'").arg("dian_zi_fei_shu_ju");
         _lz_query = QSqlQuery(_lz_db);
@@ -133,11 +134,11 @@ void MainWindow::on_pushButton_step_3_clicked()
 
             qDebug() << QString::fromUtf8("数据库 DDL 操作 成功 OK");
         }
-    }
-    else
-    {
-        qDebug() << QString::fromUtf8("请先 打开数据库连接 ERROR");
-    }
+//    }
+//    else
+//    {
+//        qDebug() << QString::fromUtf8("请先 打开数据库连接 ERROR");
+//    }
 }
 
 void MainWindow::on_pushButton_step_4_clicked()
