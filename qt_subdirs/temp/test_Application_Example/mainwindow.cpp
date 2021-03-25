@@ -135,7 +135,18 @@ void MainWindow::createStatusBar()
 }
 
 void MainWindow::readSettings()
-{INCOMPLETE_FUNCTION}
+{
+    QSettings settings(QCoreApplication::organizationName(), QCoreApplication::applicationName());
+    const QByteArray geometry = settings.value("geometry", QByteArray()).toByteArray();
+    if (geometry.isEmpty()) {
+        const QRect availableGeometry = QApplication::desktop()->availableGeometry(this);
+        resize(availableGeometry.width() / 3, availableGeometry.height() / 2);
+        move((availableGeometry.width() - width()) / 2,
+             (availableGeometry.height() - height()) / 2);
+    } else {
+        restoreGeometry(geometry);
+    }
+}
 
 void MainWindow::setCurrentFile(const QString &fileName)
 {INCOMPLETE_FUNCTION}
@@ -159,7 +170,10 @@ bool MainWindow::maybeSave()
 }
 
 void MainWindow::writeSettings()
-{INCOMPLETE_FUNCTION}
+{
+    QSettings settings(QCoreApplication::organizationName(), QCoreApplication::applicationName());
+    settings.setValue("geometry", saveGeometry());
+}
 
 void MainWindow::newFile()
 {
