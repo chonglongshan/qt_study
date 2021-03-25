@@ -2,6 +2,8 @@
 
 #include <QtWidgets>
 
+#define INCOMPLETE_FUNCTION qDebug() << QString("incomplete function: %1").arg(QT_MESSAGELOG_FUNC);
+
 MainWindow::MainWindow(QWidget *parent)
     : textEdit(new QPlainTextEdit)
 {
@@ -30,18 +32,37 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::documentWasModified()
-{}
+{INCOMPLETE_FUNCTION}
 
 void MainWindow::createActions()
-{}
+{INCOMPLETE_FUNCTION}
 
 void MainWindow::createStatusBar()
-{}
+{INCOMPLETE_FUNCTION}
 
 void MainWindow::readSettings()
-{}
+{INCOMPLETE_FUNCTION}
 
 void MainWindow::setCurrentFile(const QString &fileName)
-{}
+{INCOMPLETE_FUNCTION}
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (maybeSave())
+    {
+        writeSettings();
+        event->accept();
+    } else
+    {
+        event->ignore();
+    }
+}
 
+bool MainWindow::maybeSave()
+{
+    INCOMPLETE_FUNCTION
+    return false;
+}
+
+void MainWindow::writeSettings()
+{INCOMPLETE_FUNCTION}

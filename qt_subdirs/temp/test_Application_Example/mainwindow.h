@@ -13,6 +13,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 private slots:
     void documentWasModified();
 
@@ -21,6 +24,9 @@ private:
     void createStatusBar();
     void readSettings();
     void setCurrentFile(const QString &fileName);
+
+    bool maybeSave();
+    void writeSettings();
 
 private:
     QPlainTextEdit *textEdit;
