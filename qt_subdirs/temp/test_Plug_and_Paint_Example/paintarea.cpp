@@ -128,3 +128,18 @@ void PaintArea::mouseMoveEvent(QMouseEvent *event)
         lastPos = event->pos();
     }
 }
+
+void PaintArea::mouseReleaseEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton && lastPos != QPoint(-1, -1)) {
+        if (brushInterface) {
+            QPainter painter(&theImage);
+            setupPainter(painter);
+            QRect rect = brushInterface->mouseRelease(brush, painter,
+                                                      event->pos());
+            update(rect);
+        }
+
+        lastPos = QPoint(-1, -1);
+    }
+}

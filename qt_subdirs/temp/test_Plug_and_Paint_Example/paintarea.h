@@ -61,6 +61,9 @@ private:
 
 protected:
     void mouseMoveEvent(QMouseEvent *event) override;
+
+protected:
+    void mouseReleaseEvent(QMouseEvent *event) override;
 };
 
 #endif // PAINTAREA_H
