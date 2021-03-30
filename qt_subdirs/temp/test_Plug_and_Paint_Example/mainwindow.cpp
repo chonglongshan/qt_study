@@ -110,7 +110,11 @@ bool MainWindow::saveAs()
 
 
 void MainWindow::brushColor()
-{INCOMPLETE_FUNCTION}
+{
+    const QColor newColor = QColorDialog::getColor(paintArea->brushColor());
+    if (newColor.isValid())
+        paintArea->setBrushColor(newColor);
+}
 
 void MainWindow::brushWidth()
 {INCOMPLETE_FUNCTION}

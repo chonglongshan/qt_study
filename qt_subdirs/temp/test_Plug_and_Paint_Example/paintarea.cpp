@@ -43,3 +43,8 @@ bool PaintArea::saveImage(const QString &fileName, const char *fileFormat)
 {
     return theImage.save(fileName, fileFormat);
 }
+
+void PaintArea::setBrushColor(const QColor &color)
+{
+    this->color = color;
+}

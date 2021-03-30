@@ -9,22 +9,26 @@ class PaintArea : public QWidget
 public:
     explicit PaintArea(QWidget *parent = nullptr);
 
+public:
     bool openImage(const QString &fileName);
     void setImage(const QImage &image);
-
-    QSize sizeHint() const override;
-
-    bool saveImage(const QString &fileName, const char *fileFormat);
+private:
+    QImage theImage = {500, 400, QImage::Format_RGB32};
 
 protected:
     void paintEvent(QPaintEvent *event) override;
 
-signals:
+public:
+    QSize sizeHint() const override;
 
-public slots:
+public:
+    bool saveImage(const QString &fileName, const char *fileFormat);
 
+public:
+    QColor brushColor() const { return color; }
+    void setBrushColor(const QColor &color);
 private:
-    QImage theImage = {500, 400, QImage::Format_RGB32};
+    QColor color = Qt::blue;
 };
 
 #endif // PAINTAREA_H
