@@ -22,6 +22,7 @@ SOURCES += \
     plugindialog.cpp
 
 HEADERS += \
+    interfaces.h \
     mainwindow.h \
     paintarea.h \
     plugindialog.h

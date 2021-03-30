@@ -58,5 +58,14 @@ private:
 private:
     void loadPlugins();
     void populateMenus(QObject *plugin);
+
+private slots:
+    void changeBrush();
+    void insertShape();
+    void applyFilter();
+private:
+    typedef void (MainWindow::*Member)();
+    void addToMenu(QObject *plugin, const QStringList &texts, QMenu *menu,
+                   Member member, QActionGroup *actionGroup = nullptr);
 };
 #endif // MAINWINDOW_H

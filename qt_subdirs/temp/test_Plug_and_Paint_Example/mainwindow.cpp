@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "paintarea.h"
 #include "plugindialog.h"
+#include "interfaces.h"
 
 #include <QtWidgets>
 
@@ -182,4 +183,44 @@ void MainWindow::loadPlugins()
 }
 
 void MainWindow::populateMenus(QObject *plugin)
+{
+    auto iBrush = qobject_cast<BrushInterface *>(plugin);
+    if (iBrush)
+        addToMenu(plugin, iBrush->brushes(), brushMenu, &MainWindow::changeBrush,
+                  brushActionGroup);
+
+    auto iShape = qobject_cast<ShapeInterface *>(plugin);
+    if (iShape)
+        addToMenu(plugin, iShape->shapes(), shapesMenu, &MainWindow::insertShape);
+
+    auto iFilter = qobject_cast<FilterInterface *>(plugin);
+    if (iFilter)
+        addToMenu(plugin, iFilter->filters(), filterMenu, &MainWindow::applyFilter);
+}
+
+void MainWindow::changeBrush()
 {INCOMPLETE_FUNCTION}
+
+void MainWindow::insertShape()
+{INCOMPLETE_FUNCTION}
+
+void MainWindow::applyFilter()
+{INCOMPLETE_FUNCTION}
+
+void MainWindow::addToMenu(QObject *plugin, const QStringList &texts,
+                           QMenu *menu, Member member,
+                           QActionGroup *actionGroup)
+//{INCOMPLETE_FUNCTION}
+{
+    for (const QString &text : texts) {
+        auto action = new QAction(text, plugin); // 指定 plugin 为 QAction 的父类
+        connect(action, &QAction::triggered, this, member);
+        menu->addAction(action);
+
+        if (actionGroup) {
+            action->setCheckable(true);
+            actionGroup->addAction(action);
+        }
+    }
+}
+
