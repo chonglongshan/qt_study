@@ -30,3 +30,22 @@ HEADERS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+#LIBS           = -L../plugins
+
+#macx-xcode {
+#    LIBS += -lpnp_basictools$($${QMAKE_XCODE_LIBRARY_SUFFIX_SETTING})
+#} else {
+#    LIBS += -lpnp_basictools
+#    if(!debug_and_release|build_pass):CONFIG(debug, debug|release) {
+#        mac:LIBS = $$member(LIBS, 0) $$member(LIBS, 1)_debug
+#        win32:LIBS = $$member(LIBS, 0) $$member(LIBS, 1)d
+#    }
+#}
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../build-qt_subdirs-Desktop_Qt_5_12_5_MinGW_32_bit-Debug/temp/test_Plug_and_Paint_Example/plugins/ -lpnp_basictools
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../build-qt_subdirs-Desktop_Qt_5_12_5_MinGW_32_bit-Debug/temp/test_Plug_and_Paint_Example/plugins/ -lpnp_basictoolsd
+else:unix: LIBS += -L$$PWD/../../../build-qt_subdirs-Desktop_Qt_5_12_5_MinGW_32_bit-Debug/temp/test_Plug_and_Paint_Example/plugins/ -lpnp_basictools
+
+INCLUDEPATH += $$PWD/../../../build-qt_subdirs-Desktop_Qt_5_12_5_MinGW_32_bit-Debug/temp/test_Plug_and_Paint_Example/plugins
+DEPENDPATH += $$PWD/../../../build-qt_subdirs-Desktop_Qt_5_12_5_MinGW_32_bit-Debug/temp/test_Plug_and_Paint_Example/plugins

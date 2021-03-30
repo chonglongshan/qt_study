@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     createActions();
     createMenus();
+    loadPlugins();
 
     setWindowTitle(tr("Plug & Paint"));
 }
@@ -140,3 +141,45 @@ void MainWindow::aboutPlugins()
     PluginDialog dialog(pluginsDir.path(), pluginFileNames, this);
     dialog.exec();
 }
+
+void MainWindow::loadPlugins()
+{
+    const auto staticInstances = QPluginLoader::staticInstances(); {qDebug() << staticInstances;}
+    for (QObject *plugin : staticInstances)
+        populateMenus(plugin);
+
+    pluginsDir = QDir(qApp->applicationDirPath()); {qDebug() << pluginsDir;}
+
+#if defined(Q_OS_WIN)
+    if (pluginsDir.dirName().toLower() == "debug" || pluginsDir.dirName().toLower() == "release")
+        pluginsDir.cdUp();
+#elif defined(Q_OS_MAC)
+    if (pluginsDir.dirName() == "MacOS") {
+        pluginsDir.cdUp();
+        pluginsDir.cdUp();
+        pluginsDir.cdUp();
+    }
+#endif
+    pluginsDir.cd("plugins"); {qDebug() << pluginsDir;}
+
+    const auto entryList = pluginsDir.entryList(QDir::Files); {qDebug() << entryList;}
+    for (const QString &fileName : entryList) {
+        {qDebug() << fileName;}
+        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName)); {qDebug() << loader.objectName();}
+        QObject *plugin = loader.instance();
+        if (plugin) {
+            {qDebug() << plugin->objectName();}
+            populateMenus(plugin);
+            pluginFileNames += fileName;
+        }
+    }
+
+    brushMenu->setEnabled(!brushActionGroup->actions().isEmpty());
+    shapesMenu->setEnabled(!shapesMenu->actions().isEmpty());
+    filterMenu->setEnabled(!filterMenu->actions().isEmpty());
+
+    {qDebug() << pluginFileNames;}
+}
+
+void MainWindow::populateMenus(QObject *plugin)
+{INCOMPLETE_FUNCTION}

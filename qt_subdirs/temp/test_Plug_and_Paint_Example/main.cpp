@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 
 #include <QApplication>
+#include <QtPlugin>
+
+Q_IMPORT_PLUGIN(BasicToolsPlugin)
 
 int main(int argc, char *argv[])
 {

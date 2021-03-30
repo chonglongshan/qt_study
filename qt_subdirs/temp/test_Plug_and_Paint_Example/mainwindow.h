@@ -54,5 +54,9 @@ private:
 private:
     QDir pluginsDir;
     QStringList pluginFileNames;
+
+private:
+    void loadPlugins();
+    void populateMenus(QObject *plugin);
 };
 #endif // MAINWINDOW_H
