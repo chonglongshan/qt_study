@@ -43,6 +43,11 @@ public:
 private:
     BrushInterface *brushInterface = nullptr;
     QString brush;
+
+public:
+    void insertShape(const QPainterPath &path);
+private:
+    QPainterPath pendingPath;
 };
 
 #endif // PAINTAREA_H

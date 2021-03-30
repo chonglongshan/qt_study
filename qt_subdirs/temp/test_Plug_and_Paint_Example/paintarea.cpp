@@ -60,3 +60,11 @@ void PaintArea::setBrush(BrushInterface *brushInterface, const QString &brush)
     this->brushInterface = brushInterface;
     this->brush = brush;
 }
+
+void PaintArea::insertShape(const QPainterPath &path)
+{
+    pendingPath = path;
+#ifndef QT_NO_CURSOR
+    setCursor(Qt::CrossCursor);
+#endif
+}
