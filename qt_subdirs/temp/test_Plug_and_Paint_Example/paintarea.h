@@ -12,6 +12,9 @@ public:
     bool openImage(const QString &fileName);
     void setImage(const QImage &image);
 
+protected:
+    void paintEvent(QPaintEvent *event) override;
+
 signals:
 
 public slots:

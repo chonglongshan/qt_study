@@ -1,8 +1,14 @@
 #include "paintarea.h"
 
+#include <QDebug>
+#include <QPainter>
+
 PaintArea::PaintArea(QWidget *parent) : QWidget(parent)
 {
+    setAttribute(Qt::WA_StaticContents);
+    setAttribute(Qt::WA_NoBackground);
 
+    theImage.fill(qRgb(255, 255, 255));
 }
 
 bool PaintArea::openImage(const QString &fileName)
@@ -20,4 +26,10 @@ void PaintArea::setImage(const QImage &image)
     theImage = image.convertToFormat(QImage::Format_RGB32);
     update();
     updateGeometry();
+}
+
+void PaintArea::paintEvent(QPaintEvent * /* event */)
+{
+    QPainter painter(this);
+    painter.drawImage(QPoint(0, 0), theImage);
 }
