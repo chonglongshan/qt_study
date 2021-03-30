@@ -58,6 +58,9 @@ private:
     void setupPainter(QPainter &painter);
 private:
     QPoint lastPos = {-1, -1};
+
+protected:
+    void mouseMoveEvent(QMouseEvent *event) override;
 };
 
 #endif // PAINTAREA_H

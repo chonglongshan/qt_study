@@ -113,3 +113,18 @@ void PaintArea::setupPainter(QPainter &painter)
     painter.setPen(QPen(color, thickness, Qt::SolidLine, Qt::RoundCap,
                    Qt::RoundJoin));
 }
+
+void PaintArea::mouseMoveEvent(QMouseEvent *event)
+{
+    if ((event->buttons() & Qt::LeftButton) && lastPos != QPoint(-1, -1)) {
+        if (brushInterface) {
+            QPainter painter(&theImage);
+            setupPainter(painter);
+            const QRect rect = brushInterface->mouseMove(brush, painter, lastPos,
+                                                         event->pos());
+            update(rect);
+        }
+
+        lastPos = event->pos();
+    }
+}
