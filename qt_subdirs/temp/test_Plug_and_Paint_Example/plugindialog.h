@@ -6,7 +6,8 @@
 class PluginDialog : public QDialog
 {
 public:
-    PluginDialog();
+    PluginDialog(const QString &path, const QStringList &fileNames,
+                 QWidget *parent = nullptr);
 };
 
 #endif // PLUGINDIALOG_H

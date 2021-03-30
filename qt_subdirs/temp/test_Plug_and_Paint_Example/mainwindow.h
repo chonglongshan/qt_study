@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDir>
 
 class QActionGroup;
 class QScrollArea;
@@ -49,5 +50,9 @@ private:
 private:
     PaintArea *paintArea = nullptr;
     QScrollArea *scrollArea = nullptr;
+
+private:
+    QDir pluginsDir;
+    QStringList pluginFileNames;
 };
 #endif // MAINWINDOW_H

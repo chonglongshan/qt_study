@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "paintarea.h"
+#include "plugindialog.h"
 
 #include <QtWidgets>
 
@@ -135,6 +136,7 @@ void MainWindow::about()
 }
 
 void MainWindow::aboutPlugins()
-{INCOMPLETE_FUNCTION}
-
-
+{
+    PluginDialog dialog(pluginsDir.path(), pluginFileNames, this);
+    dialog.exec();
+}
