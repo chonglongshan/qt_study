@@ -12,6 +12,8 @@ public:
     bool openImage(const QString &fileName);
     void setImage(const QImage &image);
 
+    QSize sizeHint() const override;
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 

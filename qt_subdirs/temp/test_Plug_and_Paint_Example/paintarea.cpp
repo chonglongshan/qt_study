@@ -33,3 +33,8 @@ void PaintArea::paintEvent(QPaintEvent * /* event */)
     QPainter painter(this);
     painter.drawImage(QPoint(0, 0), theImage);
 }
+
+QSize PaintArea::sizeHint() const
+{
+    return theImage.size();
+}
