@@ -128,7 +128,11 @@ void MainWindow::brushWidth()
 }
 
 void MainWindow::about()
-{INCOMPLETE_FUNCTION}
+{
+   QMessageBox::about(this, tr("About Plug & Paint"),
+            tr("The <b>Plug & Paint</b> example demonstrates how to write Qt "
+               "applications that can be extended through plugins."));
+}
 
 void MainWindow::aboutPlugins()
 {INCOMPLETE_FUNCTION}
