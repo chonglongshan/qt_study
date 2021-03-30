@@ -198,9 +198,6 @@ void MainWindow::populateMenus(QObject *plugin)
         addToMenu(plugin, iFilter->filters(), filterMenu, &MainWindow::applyFilter);
 }
 
-void MainWindow::applyFilter()
-{INCOMPLETE_FUNCTION}
-
 void MainWindow::addToMenu(QObject *plugin, const QStringList &texts,
                            QMenu *menu, Member member,
                            QActionGroup *actionGroup)
@@ -235,5 +232,15 @@ void MainWindow::insertShape()
     const QPainterPath path = iShape->generateShape(action->text(), this);
     if (!path.isEmpty())
         paintArea->insertShape(path);
+}
+
+void MainWindow::applyFilter()
+{
+    auto action = qobject_cast<QAction *>(sender());
+    auto iFilter = qobject_cast<FilterInterface *>(action->parent());
+
+    const QImage image = iFilter->filterImage(action->text(), paintArea->image(),
+                                              this);
+    paintArea->setImage(image);
 }
 

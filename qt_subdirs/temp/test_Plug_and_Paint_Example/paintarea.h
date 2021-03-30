@@ -48,6 +48,9 @@ public:
     void insertShape(const QPainterPath &path);
 private:
     QPainterPath pendingPath;
+
+public:
+    QImage image() const { return theImage; }
 };
 
 #endif // PAINTAREA_H
