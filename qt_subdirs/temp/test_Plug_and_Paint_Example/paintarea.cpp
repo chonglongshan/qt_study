@@ -48,3 +48,8 @@ void PaintArea::setBrushColor(const QColor &color)
 {
     this->color = color;
 }
+
+void PaintArea::setBrushWidth(int width)
+{
+    thickness = width;
+}

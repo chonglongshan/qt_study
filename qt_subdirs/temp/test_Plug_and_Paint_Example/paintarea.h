@@ -29,6 +29,12 @@ public:
     void setBrushColor(const QColor &color);
 private:
     QColor color = Qt::blue;
+
+public:
+    int brushWidth() const { return thickness; }
+    void setBrushWidth(int width);
+private:
+    int thickness = 3;
 };
 
 #endif // PAINTAREA_H

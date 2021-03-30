@@ -117,7 +117,15 @@ void MainWindow::brushColor()
 }
 
 void MainWindow::brushWidth()
-{INCOMPLETE_FUNCTION}
+{
+    bool ok;
+    const int newWidth = QInputDialog::getInt(this, tr("Plug & Paint"),
+                                              tr("Select brush width:"),
+                                              paintArea->brushWidth(),
+                                              1, 50, 1, &ok);
+    if (ok)
+        paintArea->setBrushWidth(newWidth);
+}
 
 void MainWindow::about()
 {INCOMPLETE_FUNCTION}
