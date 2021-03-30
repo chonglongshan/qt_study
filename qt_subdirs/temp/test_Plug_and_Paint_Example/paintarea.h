@@ -51,6 +51,13 @@ private:
 
 public:
     QImage image() const { return theImage; }
+
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
+private:
+    void setupPainter(QPainter &painter);
+private:
+    QPoint lastPos = {-1, -1};
 };
 
 #endif // PAINTAREA_H

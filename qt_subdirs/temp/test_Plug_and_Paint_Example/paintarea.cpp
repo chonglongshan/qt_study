@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QPainter>
+#include <QMouseEvent>
 
 PaintArea::PaintArea(QWidget *parent) : QWidget(parent)
 {
@@ -67,4 +68,48 @@ void PaintArea::insertShape(const QPainterPath &path)
 #ifndef QT_NO_CURSOR
     setCursor(Qt::CrossCursor);
 #endif
+}
+
+void PaintArea::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        if (!pendingPath.isEmpty()) {
+            QPainter painter(&theImage);
+            setupPainter(painter);
+
+            const QRectF boundingRect = pendingPath.boundingRect();
+            QLinearGradient gradient(boundingRect.topRight(),
+                                     boundingRect.bottomLeft());
+            gradient.setColorAt(0.0, QColor(color.red(), color.green(),
+                                            color.blue(), 63));
+            gradient.setColorAt(1.0, QColor(color.red(), color.green(),
+                                            color.blue(), 191));
+            painter.setBrush(gradient);
+            painter.translate(event->pos() - boundingRect.center());
+            painter.drawPath(pendingPath);
+
+            pendingPath = QPainterPath();
+#ifndef QT_NO_CURSOR
+            unsetCursor();
+#endif
+            update();
+        } else {
+            if (brushInterface) {
+                QPainter painter(&theImage);
+                setupPainter(painter);
+                const QRect rect = brushInterface->mousePress(brush, painter,
+                                                              event->pos());
+                update(rect);
+            }
+
+            lastPos = event->pos();
+        }
+    }
+}
+
+void PaintArea::setupPainter(QPainter &painter)
+{
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setPen(QPen(color, thickness, Qt::SolidLine, Qt::RoundCap,
+                   Qt::RoundJoin));
 }
