@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    paintarea.cpp
+    paintarea.cpp \
+    plugindialog.cpp
 
 HEADERS += \
     mainwindow.h \
-    paintarea.h
+    paintarea.h \
+    plugindialog.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
