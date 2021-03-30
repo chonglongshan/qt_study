@@ -9,9 +9,15 @@ class PaintArea : public QWidget
 public:
     explicit PaintArea(QWidget *parent = nullptr);
 
+    bool openImage(const QString &fileName);
+    void setImage(const QImage &image);
+
 signals:
 
 public slots:
+
+private:
+    QImage theImage = {500, 400, QImage::Format_RGB32};
 };
 
 #endif // PAINTAREA_H

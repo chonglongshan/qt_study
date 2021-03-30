@@ -82,7 +82,19 @@ void MainWindow::createMenus()
 }
 
 void MainWindow::open()
-{INCOMPLETE_FUNCTION}
+{
+    const QString fileName = QFileDialog::getOpenFileName(this,
+                                                          tr("Open File"),
+                                                          QDir::currentPath());
+    if (!fileName.isEmpty()) {
+        if (!paintArea->openImage(fileName)) {
+            QMessageBox::information(this, tr("Plug & Paint"),
+                                     tr("Cannot load %1.").arg(fileName));
+            return;
+        }
+        paintArea->adjustSize();
+    }
+}
 
 bool MainWindow::saveAs()
 {INCOMPLETE_FUNCTION return false;}
