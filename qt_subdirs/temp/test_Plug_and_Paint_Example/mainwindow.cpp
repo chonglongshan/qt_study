@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "paintarea.h"
 
 #include <QtWidgets>
 
@@ -6,9 +7,17 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
+    , paintArea(new PaintArea)
+    , scrollArea(new QScrollArea)
 {
+    scrollArea->setBackgroundRole(QPalette::Dark);
+    scrollArea->setWidget(paintArea);
+    setCentralWidget(scrollArea);
+
     createActions();
     createMenus();
+
+    setWindowTitle(tr("Plug & Paint"));
 }
 
 MainWindow::~MainWindow()

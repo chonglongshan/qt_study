@@ -4,6 +4,9 @@
 #include <QMainWindow>
 
 class QActionGroup;
+class QScrollArea;
+
+class PaintArea;
 
 class MainWindow : public QMainWindow
 {
@@ -42,5 +45,9 @@ private:
     QMenu *shapesMenu = nullptr;
     QMenu *filterMenu = nullptr;
     QMenu *helpMenu = nullptr;
+
+private:
+    PaintArea *paintArea = nullptr;
+    QScrollArea *scrollArea = nullptr;
 };
 #endif // MAINWINDOW_H

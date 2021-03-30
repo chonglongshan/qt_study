@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    paintarea.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    paintarea.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
