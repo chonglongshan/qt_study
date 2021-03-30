@@ -198,9 +198,6 @@ void MainWindow::populateMenus(QObject *plugin)
         addToMenu(plugin, iFilter->filters(), filterMenu, &MainWindow::applyFilter);
 }
 
-void MainWindow::changeBrush()
-{INCOMPLETE_FUNCTION}
-
 void MainWindow::insertShape()
 {INCOMPLETE_FUNCTION}
 
@@ -222,5 +219,14 @@ void MainWindow::addToMenu(QObject *plugin, const QStringList &texts,
             actionGroup->addAction(action);
         }
     }
+}
+
+void MainWindow::changeBrush()
+{
+    auto action = qobject_cast<QAction *>(sender());
+    auto iBrush = qobject_cast<BrushInterface *>(action->parent()); // 获取 QAction 的父类，其为 plugin ，并转换为其支持的某接口。
+    const QString brush = action->text();
+
+    paintArea->setBrush(iBrush, brush);
 }
 

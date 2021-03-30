@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class BrushInterface;
+
 class PaintArea : public QWidget
 {
     Q_OBJECT
@@ -35,6 +37,12 @@ public:
     void setBrushWidth(int width);
 private:
     int thickness = 3;
+
+public:
+    void setBrush(BrushInterface *brushInterface, const QString &brush);
+private:
+    BrushInterface *brushInterface = nullptr;
+    QString brush;
 };
 
 #endif // PAINTAREA_H

@@ -1,4 +1,5 @@
 #include "paintarea.h"
+#include "interfaces.h"
 
 #include <QDebug>
 #include <QPainter>
@@ -52,4 +53,10 @@ void PaintArea::setBrushColor(const QColor &color)
 void PaintArea::setBrushWidth(int width)
 {
     thickness = width;
+}
+
+void PaintArea::setBrush(BrushInterface *brushInterface, const QString &brush)
+{
+    this->brushInterface = brushInterface;
+    this->brush = brush;
 }
