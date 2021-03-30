@@ -97,7 +97,17 @@ void MainWindow::open()
 }
 
 bool MainWindow::saveAs()
-{INCOMPLETE_FUNCTION return false;}
+{
+    const QString initialPath = QDir::currentPath() + "/untitled.png";
+
+    const QString fileName = QFileDialog::getSaveFileName(this, tr("Save As"),
+                                                          initialPath);
+    if (fileName.isEmpty())
+        return false;
+
+    return paintArea->saveImage(fileName, "png");
+}
+
 
 void MainWindow::brushColor()
 {INCOMPLETE_FUNCTION}

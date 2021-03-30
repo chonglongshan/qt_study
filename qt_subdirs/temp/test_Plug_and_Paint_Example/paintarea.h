@@ -14,6 +14,8 @@ public:
 
     QSize sizeHint() const override;
 
+    bool saveImage(const QString &fileName, const char *fileFormat);
+
 protected:
     void paintEvent(QPaintEvent *event) override;
 

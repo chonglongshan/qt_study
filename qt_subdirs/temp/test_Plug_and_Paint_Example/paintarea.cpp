@@ -38,3 +38,8 @@ QSize PaintArea::sizeHint() const
 {
     return theImage.size();
 }
+
+bool PaintArea::saveImage(const QString &fileName, const char *fileFormat)
+{
+    return theImage.save(fileName, fileFormat);
+}
