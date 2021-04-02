@@ -13,6 +13,66 @@ qt学习练手
 - bbb
 ```
 
+**2021-04-02 P1**
+1. 增加调测使用 Style Plugin Example 示例的子项目 test_Style_Plugin_Example
+- 实现主程序界面框架。
+- ...\debug 中加入 styles/simplestyleplugin.dll 等插件。效果可以显现出来。
+- 帮助文档的示例效果在windows中显示不出来。变更显示效果。[Qt文档阅读笔记-对Style Plugin Example实例的解析](https://blog.csdn.net/qq78442761/article/details/86584414)
+
+**2021-03-31 P1**
+1. 同理 拷写 PluginDialog
+
+**2021-03-29 P1**
+1. 增加调测使用 Plug & Paint Example 示例的子项目 test_Plug_and_Paint_Example 
+- 实现菜单及基本菜单项的创建。
+- 增加 PaintArea 的简单定义实现。
+- 实现菜单 open ，但是没有显示出图片。
+- 想加载图片显示，但界面窗口显示小并且背景深色，应该是 PaintArea 窗口未展现出来。同时断点 paintEvent 没有响应。
+- 重载 sizeHint 提供推荐的 PaintArea 窗口显示尺寸。程序加载窗口可以按推荐显示，并且背景变为非深色，open 加载图片也可正常显示。
+- 实现菜单 Save As
+- 实现 菜单项 Brush Color 
+- 实现 菜单项 Brush Width
+- 实现 菜单项 About
+- 增加 PluginDialog 对象
+- 实现 菜单项 About Plugins
+- 实现加载静态插件。（ Importing Static Plugins ） 插件放置位置：E:\LZ\work\qt\qt_study\build-qt_subdirs-Desktop_Qt_5_12_5_MinGW_32_bit-Debug\temp\test_Plug_and_Paint_Example\plugins
+  - 右键 添加库 外部库，指定路径和库文件。
+- 实现将插件实现的功能(导入)绑定到菜单项。
+- 实现通过菜单变更 brush
+- 实现插入图形 insertShape
+- 实现应用过滤器 applyFilter
+- 实现重载 mousePressEvent
+- 实现重载 mouseMoveEvent
+- 实现重载 mouseReleaseEvent
+
+**2021-03-26 P1**
+1. 将资源添加到项目的资源文件（qrc）中。
+- 将资源（图片等）拷贝到工程路径下。
+- QRC文件上右键--添加现有文件。将资源添加进QRC中
+
+**2021-03-25 P1**
+1. 增加调测使用 Application Example 示例的子项目 test_Application_Example 。
+- 没有菜单栏和工具栏的显示。
+
+**2021-03-24 P1**
+1. 查看 error 错误信息。
+
+**2021-03-19 P2**
+1. 增加调测使用QSql操作SQLITE的子项目  test_qsql 。
+- STEP 1 创建数据库连接
+- STEP 2 打开数据库连接
+- STEP 3 数据库 DDL 操作
+- STEP 4 提取 DDL 操作结果
+
+**2021-03-19 P1**
+1. 增加调测毫秒（ms）时间转对应的日期、时间的子项目 test_time_convert 。
+- 默认转换会使用本地时区（北京 加 8小时）。
+- 转 UTC日期时间 规避时区差异。
+
+**2021-03-18 P1**
+1. 增加调测使用log4qt的测序子项目 test_log4qt 。
+- Log4Qt::DailyRollingFileAppender 的如何基本使用调测完成。
+
 **2021-03-04 P2**
 1. 第三方库不直接加入子目录项目 qt_subdirs 中作为子项目。
 - 因为如果要调试第三方库的示例可能由于qt_subdirs中其他某个三方库有问题就不能编译运行。
