@@ -53,7 +53,7 @@ QByteArray LzChuanKouZhuShou::lzFaSongBingJieShouShuJu(const LzChuanKouXinXi &ch
         QString s = tr("send: ");
         for(int i = 0; i < data.size(); ++i)
         {
-            s += QString("%1 ").arg(data.at(i), 2, 16, QLatin1Char('0')).toUpper();
+            s += QString("%1 ").arg(static_cast<unsigned char>(data.at(i)), 2, 16, QLatin1Char('0')).toUpper();
         }
         lzDebug() << s;
     }
@@ -64,7 +64,7 @@ QByteArray LzChuanKouZhuShou::lzFaSongBingJieShouShuJu(const LzChuanKouXinXi &ch
         QString r = tr("receive: ");
         for(int i = 0; i < ret.size(); ++i)
         {
-            r += QString("%1 ").arg(ret.at(i), 2, 16, QLatin1Char('0')).toUpper();
+            r += QString("%1 ").arg(static_cast<unsigned char>(ret.at(i)), 2, 16, QLatin1Char('0')).toUpper();
         }
         lzDebug() << r;
     }
