@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     //
-    LzChuanKouXinXi chuan_kou;
+    LzChuanKouXinXi chuan_kou("COM3", 115200, 'N', 8, 1);
     LzChuanKouZhuShou zhu_shou;
     zhu_shou.lzFaSongBingJieShouShuJu(chuan_kou, QByteArray());
 }

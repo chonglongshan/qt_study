@@ -12,6 +12,20 @@ LzChuanKouXinXi::LzChuanKouXinXi(QObject *parent) : QObject(parent)
 
 }
 
+LzChuanKouXinXi::LzChuanKouXinXi(QString chuan_kou_hao
+                                 , int bo_te_lv
+                                 , char jiao_yan_fang_shi
+                                 , int shu_ju_wei
+                                 , int ting_zhi_wei)
+    : _lz_chuan_kou_hao(chuan_kou_hao)
+    , _lz_bo_te_lv(bo_te_lv)
+    , _lz_jiao_yan_fang_shi(jiao_yan_fang_shi)
+    , _lz_shu_ju_wei(shu_ju_wei)
+    , _lz_ting_zhi_wei(ting_zhi_wei)
+{
+
+}
+
 bool operator==(const LzChuanKouXinXi &xx1, const LzChuanKouXinXi &xx2)
 {
     if((xx1._lz_chuan_kou_hao == xx2._lz_chuan_kou_hao)

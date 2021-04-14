@@ -8,6 +8,16 @@ class LzChuanKouXinXi : public QObject
     Q_OBJECT
 public:
     explicit LzChuanKouXinXi(QObject *parent = nullptr);
+//    LzChuanKouXinXi(QString chuan_kou_hao = "COM1"
+//            , int bo_te_lv = 9600
+//            , char jiao_yan_fang_shi = 'N'
+//            , int shu_ju_wei = 8
+//            , int ting_zhi_wei = 1);
+    LzChuanKouXinXi(QString chuan_kou_hao
+                    , int bo_te_lv
+                    , char jiao_yan_fang_shi
+                    , int shu_ju_wei
+                    , int ting_zhi_wei);
 
     //
     LzChuanKouXinXi &operator=(const LzChuanKouXinXi &other)
@@ -31,7 +41,7 @@ private:
     int _lz_shu_ju_wei;
     int _lz_ting_zhi_wei;
 
-//    friend class LzChuanKouZhuShou;
+    friend class LzChuanKouZhuShou;
     friend bool operator==(const LzChuanKouXinXi &xx1, const LzChuanKouXinXi &xx2);
     friend bool operator!=(const LzChuanKouXinXi &xx1, const LzChuanKouXinXi &xx2);
 //    friend QDataStream &operator<<(QDataStream &s, const LzChuanKouXinXi &x);
