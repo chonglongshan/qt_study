@@ -16,46 +16,6 @@ QByteArray LzChuanKouZhuShou::lzFaSongBingJieShouShuJu(const LzChuanKouXinXi &ch
 {
     QByteArray ret;
 
-//    {
-//        lzDebug() << _lz_chuan_kou.lzToString();
-//        lzDebug() << chuan_kou.lzToString();
-//    }
-
-//    // 判定串口信息是否有变化
-////    _lz_mutex_serial_port_open_close.lock();
-//    if(_lz_chuan_kou != chuan_kou)
-//    {
-//        // 关闭串口
-//        if(_lz_serial_port_opened)
-//        {
-//            _lz_serial_port_opened = false;
-//            _lz_serial_port.close();
-//        }
-//        _lz_chuan_kou = chuan_kou;
-//    }
-
-//    // 是否需要打开串口
-//    if(!_lz_serial_port_opened)
-//    {
-//        if (!_lz_serial_port.open(QIODevice::ReadWrite))
-//        {
-//            _lz_serial_port_opened = false;
-//            lzDebug() << tr("Can't open %1, error code %2")
-//                         .arg(_lz_chuan_kou.lzToString())
-//                         .arg(_lz_serial_port.error());
-//        }
-//        else
-//        {
-//            _lz_serial_port_opened = true;
-//        }
-//    }
-////    _lz_mutex_serial_port_open_close.unlock();
-
-//    {
-//        lzDebug() << _lz_chuan_kou.lzToString();
-//        lzDebug() << chuan_kou.lzToString();
-//    }
-
     // 进行串口数据收发
     if(_lzQingQiuChuanKou(chuan_kou))
     {
