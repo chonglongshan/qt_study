@@ -184,6 +184,19 @@
      </rect>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_ms_diff_to_show">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>70</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>距显示窗口的毫秒数</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

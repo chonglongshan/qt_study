@@ -18,6 +18,8 @@ public:
 private slots:
     void on_pushButton_convert_clicked();
 
+    void on_pushButton_ms_diff_to_show_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

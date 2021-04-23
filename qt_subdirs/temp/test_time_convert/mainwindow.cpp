@@ -4,6 +4,9 @@
 #include <QDateTime>
 #include <QDebug>
 
+extern QDateTime lz_show_date_time;
+QDateTime lz_show_date_time;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -15,7 +18,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
 
 void MainWindow::on_pushButton_convert_clicked()
 {
@@ -77,5 +79,31 @@ void MainWindow::on_pushButton_convert_clicked()
         }
 
         ui->lineEdit_time_0->setText(t0.toString("hh:mm:ss.zzz"));
+    }
+}
+
+void MainWindow::on_pushButton_ms_diff_to_show_clicked()
+{
+    QDateTime lz_date_time = QDateTime::currentDateTime();
+    long long msecs = lz_date_time.msecsTo(lz_show_date_time);
+
+    {
+        qDebug() << "lz_show_date_time : " << lz_show_date_time.toString("yyyy-MM-dd hh:mm:ss.zzz");
+        qDebug() << "lz_date_time : " << lz_date_time.toString("yyyy-MM-dd hh:mm:ss.zzz");
+        qDebug() << "msecs : " << msecs;
+    }
+
+    //ui->lineEdit_ms->setText(QString::number(msecs));
+    ui->lineEdit_ms->setText(QString::number(-msecs));
+
+    {
+        QDateTime lz_date_time = QDateTime::currentDateTime();
+        long long secs = lz_date_time.secsTo(lz_show_date_time);
+
+        {
+            qDebug() << "lz_show_date_time : " << lz_show_date_time.toString("yyyy-MM-dd hh:mm:ss.zzz");
+            qDebug() << "lz_date_time : " << lz_date_time.toString("yyyy-MM-dd hh:mm:ss.zzz");
+            qDebug() << "secs : " << secs;
+        }
     }
 }
