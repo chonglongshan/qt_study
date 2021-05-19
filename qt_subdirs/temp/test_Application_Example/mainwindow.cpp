@@ -64,7 +64,7 @@ MainWindow::MainWindow()
     createActions();
     createStatusBar();
 
-    readSettings();
+    readSettings(); // 读取 保存的窗口尺寸、位置等几何信息
 
     connect(textEdit->document(), &QTextDocument::contentsChanged,
             this, &MainWindow::documentWasModified);
@@ -85,7 +85,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 //! [3] //! [4]
 {
     if (maybeSave()) {
-        writeSettings();
+        writeSettings(); // 保存 窗口尺寸、位置等几何信息
         event->accept();
     } else {
         event->ignore();
@@ -279,14 +279,14 @@ void MainWindow::readSettings()
 //! [34] //! [36]
 {
     QSettings settings(QCoreApplication::organizationName(), QCoreApplication::applicationName());
-    const QByteArray geometry = settings.value("geometry", QByteArray()).toByteArray();
+    const QByteArray geometry = settings.value("geometry", QByteArray()).toByteArray(); // 读取 保存的窗口尺寸、位置等几何信息
     if (geometry.isEmpty()) {
         const QRect availableGeometry = QApplication::desktop()->availableGeometry(this);
         resize(availableGeometry.width() / 3, availableGeometry.height() / 2);
         move((availableGeometry.width() - width()) / 2,
              (availableGeometry.height() - height()) / 2);
     } else {
-        restoreGeometry(geometry);
+        restoreGeometry(geometry); // 恢复到 保存的窗口尺寸、位置等几何信息
     }
 }
 //! [35] //! [36]
@@ -295,8 +295,8 @@ void MainWindow::readSettings()
 void MainWindow::writeSettings()
 //! [37] //! [39]
 {
-    QSettings settings(QCoreApplication::organizationName(), QCoreApplication::applicationName());
-    settings.setValue("geometry", saveGeometry());
+    QSettings settings(QCoreApplication::organizationName(), QCoreApplication::applicationName()); // 该构造函数在 Windows 下是写入注册表
+    settings.setValue("geometry", saveGeometry()); // 保存 窗口尺寸、位置等几何信息
 }
 //! [38] //! [39]
 
