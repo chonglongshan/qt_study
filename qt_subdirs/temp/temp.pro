@@ -5,6 +5,7 @@ SUBDIRS += \
     test_Plug_and_Paint_Example \
     test_QSerialPort \
     test_Style_Plugin_Example \
+    test_Text_Codecs_Example \
     test_application_out_zhong_wen_luan_ma \
     test_application_out_zhong_wen_luan_ma_widget \
     test_log4qt \
