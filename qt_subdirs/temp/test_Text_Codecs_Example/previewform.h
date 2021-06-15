@@ -48,44 +48,48 @@
 **
 ****************************************************************************/
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef PREVIEWFORM_H
+#define PREVIEWFORM_H
 
+#include <QDialog>
 #include <QList>
-#include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
-class QAction;
-class QTextCodec;
+class QComboBox;
+class QDialogButtonBox;
+class QLabel;
 class QPlainTextEdit;
+class QPushButton;
+class QTabWidget;
+class QTextCodec;
 QT_END_NAMESPACE
 
-class EncodingDialog;
-class PreviewForm;
-
-class MainWindow : public QMainWindow
+class PreviewForm : public QDialog
 {
     Q_OBJECT
 
 public:
-    MainWindow();
+    explicit PreviewForm(QWidget *parent = nullptr);
+
+    void setCodecList(const QList<QTextCodec *> &list);
+    void setEncodedData(const QByteArray &data);
+    QString decodedString() const { return decodedStr; }
 
 private slots:
-    void open();
-    void save();
-    void about();
-    void aboutToShowSaveAsMenu();
-    void encodingDialog();
+    void updateTextEdit();
 
 private:
-    void findCodecs();
-    void createMenus();
+    void reset();
 
-    QList<QAction *> saveAsActs;
+    QByteArray encodedData;
+    QString decodedStr;
+
+    QPushButton *okButton;
+    QTabWidget *tabWidget;
+    QComboBox *encodingComboBox;
     QPlainTextEdit *textEdit;
-    PreviewForm *previewForm;
-    QList<QTextCodec *> codecs;
-    EncodingDialog *m_encodingDialog = nullptr;
+    QPlainTextEdit *hexDumpEdit;
+    QLabel *statusLabel;
 };
 
 #endif
