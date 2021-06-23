@@ -21,3 +21,20 @@ SOURCES += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+#QMAKE_CXXFLAGS += -finput-charset=UTF-8
+#QMAKE_CXXFLAGS += -fexec-charset=GBK
+
+#QMAKE_CFLAGS += -fexec-charset=UTF-8 -finput-charset=GBK
+#QMAKE_CXXFLAGS += -fexec-charset=UTF-8 -finput-charset=UTF-8
+
+#QMAKE_CFLAGS += -fexec-charset=GBK -finput-charset=UTF-8
+#QMAKE_CXXFLAGS += -fexec-charset=GBK -finput-charset=UTF-8
+
+#QMAKE_CXXFLAGS += -fexec-charset=GB2312
+#QMAKE_CXXFLAGS += -fexec-charset=GBK -finput-charset=GBK
+
+#QMAKE_CFLAGS += -fexec-charset=GBK -finput-charset=GBK
+
+#QMAKE_CFLAGS += /utf-8
+#QMAKE_CXXFLAGS += /utf-8
