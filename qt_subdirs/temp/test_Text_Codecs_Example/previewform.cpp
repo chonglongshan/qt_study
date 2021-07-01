@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
@@ -185,6 +185,21 @@ void PreviewForm::setCodecList(const QList<QTextCodec *> &list)
     foreach (const QTextCodec *codec, list) {
         encodingComboBox->addItem(QLatin1String(codec->name()),
                                   QVariant(codec->mibEnum()));
+
+//        {
+//            int mib = codec->mibEnum();
+//            const QTextCodec *codec = QTextCodec::codecForMib(mib);
+//            const QString name = QLatin1String(codec->name());
+
+//            QString str("中文");
+////            QString str("zhongwen");
+//            QByteArray ba("\xE4\xB8\xAD\xE6\x96\x87");
+////            qDebug() << str;
+//            qDebug() << ba;
+//            QTextCodec::ConverterState state;
+//            QString decodedStr = codec->toUnicode(/*str.toUtf8().constData()*/ba.constData(), str.size(), &state);
+//            qDebug() << name << ": " << decodedStr;
+//        }
     }
 }
 
@@ -237,4 +252,39 @@ void PreviewForm::updateTextEdit()
     else
         textEdit->clear();
     okButton->setEnabled(success);
+
+    auto cnt = encodingComboBox->count();
+    for (int i = 0; i < cnt; ++i)
+    {
+        int mib = encodingComboBox->itemData(i).toInt();
+        const QTextCodec *codec = QTextCodec::codecForMib(mib);
+        const QString name = QLatin1String(codec->name());
+
+        QTextCodec::ConverterState state;
+        decodedStr = codec->toUnicode(encodedData.constData(), encodedData.size(), &state);
+        qDebug() << name << ": " << decodedStr;
+
+        bool success = true;
+        if (state.remainingChars) {
+            success = false;
+            const QString message =
+                tr("%1: conversion error at character %2")
+                .arg(name).arg(encodedData.size() - state.remainingChars + 1);
+            statusLabel->setText(message);
+            statusLabel->setStyleSheet(QStringLiteral("background-color: \"red\";"));
+        } else if (state.invalidChars) {
+            statusLabel->setText(tr("%1: %n invalid characters", 0, state.invalidChars).arg(name));
+            statusLabel->setStyleSheet(QStringLiteral("background-color: \"yellow\";"));
+        } else {
+            statusLabel->setText(tr("%1: %n bytes converted", 0, encodedData.size()).arg(name));
+            statusLabel->setStyleSheet(QString());
+        }
+//        if (success)
+//            textEdit->setPlainText(decodedStr);
+//        else
+//            textEdit->clear();
+        okButton->setEnabled(success);
+
+        textEdit->appendPlainText(name + ": " + decodedStr);
+    }
 }

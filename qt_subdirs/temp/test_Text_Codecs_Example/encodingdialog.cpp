@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2018 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
@@ -65,6 +65,8 @@
 #endif
 
 #include <QTextStream>
+
+#include <QDebug>
 
 // Helpers for formatting character sequences
 
@@ -192,14 +194,18 @@ static void formatStringSequence(QTextStream &str, Iterator i1, Iterator i2,
 
 static QString encodedString(const QString &value, EncodingDialog::Encoding e)
 {
+    qDebug() << value;
+
     QString result;
     QTextStream str(&result);
     switch (e) {
     case EncodingDialog::Unicode:
+        qDebug() << value.unicode();
         formatStringSequence<EncodingDialog::Unicode>(str, value.cbegin(), value.cend(),
                                                       16, 4, 'u');
         break;
     case EncodingDialog::Utf8: {
+        qDebug() << value.toUtf8();
         const QByteArray utf8 = value.toUtf8();
         str << "u8";
         formatStringSequence<EncodingDialog::Utf8>(str, utf8.cbegin(), utf8.cend(),
@@ -207,6 +213,7 @@ static QString encodedString(const QString &value, EncodingDialog::Encoding e)
     }
         break;
     case EncodingDialog::Utf16: {
+        qDebug() << value.utf16();
         auto utf16 = value.utf16();
         auto utf16End = utf16 + value.size();
         str << 'u';
@@ -215,6 +222,7 @@ static QString encodedString(const QString &value, EncodingDialog::Encoding e)
     }
         break;
     case EncodingDialog::Utf32: {
+        qDebug() << value.toUcs4();
         auto utf32 = value.toUcs4();
         str << 'U';
         formatStringSequence<EncodingDialog::Utf32>(str, utf32.cbegin(), utf32.cend(),
@@ -222,6 +230,7 @@ static QString encodedString(const QString &value, EncodingDialog::Encoding e)
     }
         break;
     case EncodingDialog::Latin1: {
+        qDebug() << value.toLatin1();
         const QByteArray latin1 = value.toLatin1();
         formatStringSequence<EncodingDialog::Latin1>(str, latin1.cbegin(), latin1.cend(),
                                                      16, 0, 'x');

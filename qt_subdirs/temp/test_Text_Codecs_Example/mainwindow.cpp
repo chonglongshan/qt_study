@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
 **
 ** Copyright (C) 2016 The Qt Company Ltd.
 ** Contact: https://www.qt.io/licensing/
@@ -88,6 +88,7 @@ void MainWindow::open()
     }
 
     const QByteArray data = file.readAll();
+    qDebug() << data;
 
     previewForm->setWindowTitle(tr("Choose Encoding for %1").arg(QFileInfo(fileName).fileName()));
     previewForm->setEncodedData(data);
